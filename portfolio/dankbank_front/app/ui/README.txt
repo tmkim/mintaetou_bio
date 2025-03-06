@@ -1,1 +1,0 @@
-Not sure if I'm keeping navbar.tsx because I'll probably move navbar to about_me, but keeping it now just in case.

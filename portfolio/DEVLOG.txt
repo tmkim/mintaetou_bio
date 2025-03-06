@@ -1,0 +1,13 @@
+3/5 - Started making my portfolio website!
+
+Originally I wanted to try making the base Django and add projects on top, but I realized it will just be a lot simpler and cleaner to use next.js as the base and add additional projects on top.
+Realistically I want to continue using both NextJS and Django, so I'm going to continue using this stack for now.
+
+Ported over my backend and frontend from my DankBank project
+    Backend was easy, all worked well
+    Frontend having some issues with formatting css...
+    
+3/6
+    Continuing to look into frontend issues, figured out it's because nextjs is using latest version of Tailwind CSS (v4), which uses a different structure than v3
+    Fixed the structure of my frontend with respect to new Tailwind CSS, all good now! 
+    

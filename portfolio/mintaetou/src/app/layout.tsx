@@ -1,4 +1,4 @@
-import '@/app/ui/global.css';
+import '@/app/globals.css';
 import { inter } from '@/app/ui/dankbank/fonts';
 import { AuthProvider } from "@/context/AuthContext";
 
