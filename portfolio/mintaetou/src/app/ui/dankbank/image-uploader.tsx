@@ -40,8 +40,14 @@ export default function ImageUploader({ onImagesSelected, itemImages = [] }: Upl
           Add Images:
       </label>
       <div>
-        <input type="file" multiple onChange={handleFileChange} 
-          className="block w-full rounded-md border border-gray-400 px-4 py-2 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+        <label
+          htmlFor="file-upload"
+          className="block w-full cursor-pointer rounded-md border border-gray-400 px-4 py-2 text-base text-gray-700 focus:ring-2 focus:ring-green-500 bg-gray-100 hover:bg-gray-200"
+        >
+          {selectedImages.length > 0 ? String(selectedImages.length) + " images selected" : "Choose images..."}
+        </label>
+        <input id="file-upload" type="file" multiple onChange={handleFileChange} 
+          className="hidden"
           />
       </div>
     </div>

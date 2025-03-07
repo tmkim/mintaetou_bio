@@ -4,7 +4,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/dankbank/button';
 import React, { useEffect, useState } from 'react';
-import ImageUploader from '@/app/ui/dankbank/upload';
+import ImageUploader from '@/app/ui/dankbank/image-uploader';
 import { CategoryData, Item, Image } from '@/app/lib/dankbank/definitions';
 
 interface CreateProps {
@@ -283,6 +283,16 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
             alert('Network error. Please try again later.');
         }
     };
+
+    const handleImageDelete = (index: number) => {
+        // Show confirmation dialog
+        const confirmDelete = window.confirm("Are you sure you want to delete this image?");
+        
+        if (confirmDelete) {
+            // If confirmed, remove the image at the specified index
+            setSelectedImages((prevFiles) => prevFiles.filter((_, i) => i !== index));
+        }
+    }
 
     // Render specific inputs based on chosen category
     const renderCategorySpecificInputs = () => {
@@ -666,28 +676,45 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
 
                             {/* Image Upload */}
                             <div>
-                                <ImageUploader onImagesSelected={handleFileSelection} />
+                                <ImageUploader onImagesSelected={handleFileSelection} itemImages={selectedImages} />
                                 <div className="mt-4 pl-2 pr-4 h-40 block border rounded-md border-gray-400 overflow-y-auto">
                                     {selectedImages.length > 0 && (
                                     <div>
                                         {selectedImages.map((file, index) => (
                                         <div key={index} className="my-2">
-                                            <input 
-                                            required
-                                            value={file.name}
-                                            onChange={(e) => handleFileNameChange(index, e.target.value)}
-                                            className="block w-full h-10 rounded-md border border-gray-400 px-4 py-2 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"/>
+                                            {/* Container for the X button and name input */}
+                                            <div className="flex items-center mb-2">
+                                                {/* X Button to delete */}
+                                                <button
+                                                    onClick={() => handleImageDelete(index)}
+                                                    className="mr-2 text-red-500 hover:text-red-700 focus:outline-none"
+                                                    aria-label="Delete"
+                                                >
+                                                    ❌
+                                                </button>
+    
+                                                {/* Input field for file name */}
+                                                <input 
+                                                    required
+                                                    value={file.name}
+                                                    onChange={(e) => handleFileNameChange(index, e.target.value)}
+                                                    className="block w-full h-10 rounded-md border border-gray-400 px-4 py-2 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                                />
+                                            </div>
+    
+                                            {/* Textarea for file description */}
                                             <textarea
-                                            placeholder="Description"
-                                            value={file.description || ''}
-                                            onChange={(e) => handleDescriptionChange(index, e.target.value)}
-                                            className="block w-full h-10 rounded-md border border-gray-400 px-4 py-2 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                                placeholder="Description"
+                                                value={file.description || ''}
+                                                onChange={(e) => handleDescriptionChange(index, e.target.value)}
+                                                className="block w-full h-10 rounded-md border border-gray-400 px-4 py-2 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                                             />
                                         </div>
                                         ))}
                                     </div>
                                     )}
                                 </div>
+    
                             </div>
                         </div>
 

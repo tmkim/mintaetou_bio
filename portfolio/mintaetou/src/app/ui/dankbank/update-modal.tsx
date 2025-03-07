@@ -8,7 +8,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/dankbank/button';
 import { useEffect, useState } from 'react';
-import ImageUploader from '@/app/ui/dankbank/upload';
+import ImageUploader from '@/app/ui/dankbank/image-uploader';
 
 type Category = Item['category'];
 
