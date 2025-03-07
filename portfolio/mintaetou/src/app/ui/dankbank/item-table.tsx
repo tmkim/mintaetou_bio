@@ -13,9 +13,10 @@ type ItemTableProps = {
   data: Item[]
   refreshData: () => void;
   sortOrder: (order: string) => void;
+  setData: (value: React.SetStateAction<Item[]>) => void;
 };
 
-const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, sortOrder }) => {
+const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, sortOrder, setData }) => {
 
   // const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const [token, setToken] = useState<string | null>(null);
@@ -24,15 +25,16 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, so
       setToken(localStorage.getItem("token"));
     }
   }, []);
+  
   useEffect(() => {
-    setResults(data)
+    setData(data)
   }, [data]);
 
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
   // ------------ populate list with results -------------
 
-  const [results, setResults] = useState<Item[]>(data);
+  // const [results, setResults] = useState<Item[]>(data);
 
   // ------------- Delete Item + Modal ---------------
 
@@ -58,7 +60,7 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, so
           throw new Error(`Error: ${response.statusText}`);
         }
   
-        setResults((prevResults) => prevResults.filter((item) => item.id !== itemToDelete.id));
+        setData((prevResults) => prevResults.filter((item) => item.id !== itemToDelete.id));
         refreshData();
         setIsDeleteModalOpen(false); // Close the modal after deleting
   
@@ -74,7 +76,7 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, so
   };
 
   const handleUpdate = (updatedItem: Item) => {
-    setResults((prevItems) =>
+    setData((prevItems) =>
       prevItems.map((item) =>
         item.id === updatedItem.id ? updatedItem : item
       )
@@ -105,7 +107,7 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, so
         sortOrder("")
     }
     setSortConfig({ key, sortOrder: newOrder });
-    refreshData();
+    // refreshData();
   }
 
 
@@ -155,25 +157,25 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, so
                 </tr>
               </thead>
               <tbody className="bg-white overflow-y-auto max-h-[65vh] block border-b-0 border-gray-400">
-                {results.map((item, i) => (
+                {data.map((item, i) => (
                   <tr
                     key={item.id}
                     className={clsx(
                       'flex items-center justify-between py-4 pl-4 pr-4 hover:bg-gray-100 cursor-pointer',
-                      { 'border-t border-gray-500': i !== 0, 'mb-4': i === results.length - 1}
+                      { 'border-t border-gray-500': i !== 0, 'mb-4': i === data.length - 1}
                     )}
                     onClick={() => onRowClick(item)}
                   >
-                    <td className="w-3/5 pl-5">
+                    <td className="min-w-3/5 pl-5">
                       <p className="truncate text-sm font-semibold md:text-base">{item.name}</p>
                       <p className="hidden text-sm text-gray-500 sm:block">{item.category}</p>
                     </td>
-                    <td className="w-1/5 text-left pl-7">
+                    <td className="min-w-1/5 text-left pl-7">
                       <p className={`${lusitana.className} truncate text-xl font-medium`}>
                         {item.rating} / 100
                       </p>
                     </td>
-                    <td className="w-1/8 text-right" style={{ visibility: token ? 'visible' : 'hidden' }}>
+                    <td className="min-w-1/8 text-right" style={{ visibility: token ? 'visible' : 'hidden' }}>
                       <button
                         onClick={() => setSelectedItem(item)}
                         className="border border-gray-300 p-1 mr-1 rounded-md hover:border-gray-500 focus:outline focus:outline-3 focus:outline-blue-500"

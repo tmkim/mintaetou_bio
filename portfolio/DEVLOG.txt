@@ -38,3 +38,7 @@ Ported over my backend and frontend from my DankBank project
         -- looks like it's only sorting current page rather than sorting entire results then separating pages 
         ++ fixed sorting by moving sort logic to the backend
         ++ updated frontend to update search params based on sort 
+    > data is re-rendering page every time it changes 
+        ++ restructured how data is stored -> using state to prevent re-renders
+
+    Alright I think we're pretty set on Dank Bank for now! 

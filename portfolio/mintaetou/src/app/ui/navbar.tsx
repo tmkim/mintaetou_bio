@@ -84,7 +84,7 @@ const Navbar = () => {
   
   return (
     <div className="flex h-full flex-col">
-      <nav className="mb-2 flex h-20 items-center justify-between  bg-green-700 p-4 w-full overflow-x-hidden">
+      <nav className="mb-4 flex h-20 items-center justify-between  bg-green-700 p-4 w-full overflow-x-hidden">
         
         {/* Left Side: Logo + Name */}
         <div className="flex items-center min-w-[240px] mr-5 md:mr-10">

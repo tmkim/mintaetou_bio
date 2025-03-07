@@ -13,12 +13,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         <AuthProvider>
-        <div className="flex h-screen flex-col ">
+        <div className="flex h-screen flex-col bg-gray-100">
           <div className="w-full flex-none">
             <Navbar />
           </div>
           <Suspense>
-            <div className="flex-grow bg-gray-100 ">{children}</div>
+            {children}
+            {/* <div className="flex-grow bg-gray-100 ">{children}</div> */}
           </Suspense>
         </div>
         </AuthProvider>

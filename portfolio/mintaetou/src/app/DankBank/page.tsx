@@ -19,6 +19,16 @@ type FilterChecks = {
   Travel: boolean;
 }
 
+const fetcher = async (url: string) => {
+  console.log(url)
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error('Network response was not ok');
+  }
+  const r = await res.json()
+  return r;
+};
+
 const ItemsPage: React.FC = () => {
   // const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const [token, setToken] = useState<string | null>(null);
@@ -87,43 +97,32 @@ const ItemsPage: React.FC = () => {
   const categoryParams = selectedCategories.length > 0 ? '&category=' + selectedCategories.join('&category=') : '';
 
   const fetchURL = `http://localhost:8000/dankbank_back/items/?page=${currentPage}&query=${searchQuery}&limit=${pageLimit}${categoryParams}${sortOrder}`
-
-  const fetcher = async (url: string) => {
-    console.log(url)
-    const res = await fetch(url);
-    if (!res.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const r = await res.json()
-    return r;
-  };
   
   const { data, error } = useSWR(fetchURL, fetcher)
+  const [results, setResults] = useState<Item[]>(data?.results);
 
   useEffect(() => {
-    console.log("Updated data:", data?.results);
+    // console.log("Updated data:", data?.results);
     if (data?.results) {
       setTotalItems(data?.count); // Update total items from fetched data
+      setResults(data?.results)
     }
   }, [data]);
 
   // Call the updateQueryParams in response to changes in searchQuery, currentPage, and pageLimit
   useEffect(() => {
-    updateQueryParams(searchQuery, currentPage, pageLimit);
+    mutate(fetchURL)
+    // updateQueryParams(searchQuery, currentPage, pageLimit);
   }, [searchQuery, currentPage, pageLimit, sortOrder]);
 
   const [item, setItemDetail] = useState<Item | null>(null);
   const handleRowClick = (rowData: Item) => {
     setItemDetail(rowData);
-    console.log(rowData);
+    // console.log(rowData);
   };
 
   if (error) {
     return <div>Error loading items</div>;
-  }
-
-  if (!data?.results) {
-    return <div>Loading...</div>;
   }
 
   return (
@@ -138,7 +137,7 @@ const ItemsPage: React.FC = () => {
                 placeholder="Search items"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                onBlur={() => updateQueryParams(searchQuery, 1, pageLimit)}
+                // onBlur={() => updateQueryParams(searchQuery, 1, pageLimit)}
               />
             <button
               className="flex items-center justify-center min-w-[160px] p-2 text-lg font-semibold bg-green-500 text-white rounded-md hover:bg-green-600"
@@ -187,12 +186,15 @@ const ItemsPage: React.FC = () => {
             </div>
           </div>
 
-          <ItemTable
-            onRowClick={handleRowClick}
-            data={data.results}
-            refreshData={() => mutate(fetchURL)}
-            sortOrder={setSortOrder}
-          />
+          {results && (
+            <ItemTable
+              onRowClick={handleRowClick}
+              data={results}
+              setData={setResults}
+              refreshData={() => mutate(fetchURL)}
+              sortOrder={setSortOrder}
+            />
+          )}
           
           {/* Page navigation buttons */}
           <Pagination
@@ -201,7 +203,7 @@ const ItemsPage: React.FC = () => {
             totalItems={totalItems}
             onPageChange={(newPage) => {
               setCurrentPage(newPage); // Ensure state is updated
-              updateQueryParams(searchQuery, newPage, pageLimit);
+              // updateQueryParams(searchQuery, newPage, pageLimit);
             }}
           />
         </div>
