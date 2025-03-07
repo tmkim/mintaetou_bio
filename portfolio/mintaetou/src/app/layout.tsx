@@ -23,7 +23,7 @@ export default function RootLayout({
           </Suspense>
         </div>
         </AuthProvider>
-        <footer className="text-center py-6 bg-green-700 text-white">
+        <footer className="text-center py-6 mt-4 bg-green-700 text-white">
             <p>&copy; 2025 Tae-Min Kim. All rights reserved.</p>
         </footer>
         </body>
