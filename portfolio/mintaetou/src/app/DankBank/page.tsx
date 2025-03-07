@@ -125,7 +125,7 @@ const ItemsPage: React.FC = () => {
         <div className="flex-grow flex-shrink-0 lg:basis-1/2">
           <div className="flex space-x-2 w-full">
               <input
-                className="flex-grow w-3/4 p-2 border border-gray-300 rounded-md"
+                className="flex-grow w-3/4 p-2 border border-gray-300 rounded-md bg-white"
                 type="text"
                 placeholder="Search items"
                 value={searchQuery}
@@ -168,7 +168,7 @@ const ItemsPage: React.FC = () => {
             <div className="flex items-center">
               <span className="text-sm text-gray-700">Rows per page:</span>
               <select
-                className="ml-2 pr-8 py-2 rounded-lg border border-gray-300 appearance-none bg-white text-gray-700 focus:ring-2 focus:ring-blue-500"
+                className="ml-2 px-4 py-2 rounded-lg border border-gray-300 appearance-none bg-white text-gray-700 focus:ring-2 focus:ring-blue-500"
                 value={pageLimit}
                 onChange={(e) => handleLimitChange(Number(e.target.value))}
               >
@@ -211,8 +211,6 @@ const ItemsPage: React.FC = () => {
         }/>
       )}
     </main>
-
-
   );
 };
 

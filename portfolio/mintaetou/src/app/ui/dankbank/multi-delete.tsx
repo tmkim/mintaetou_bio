@@ -93,8 +93,9 @@ const DeleteItemsButton: React.FC<MultiDeleteProps> = ({ refreshData }) => {
         </button>
 
         {isModalOpen && (
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center">
-            <div className="bg-white rounded-lg p-4 max-w-lg w-full">
+          <div className="fixed inset-0 bg-gray-500 flex items-center justify-center"
+               style={{ backgroundColor: 'rgba(31, 41, 55, 0.5)' }}>
+           <div className="bg-white rounded-lg p-4 max-w-lg w-full">
               <h2 className="text-xl mb-4">Select Items to Delete</h2>
               <div className="overflow-y-auto max-h-64 mb-4">
                 {items.map((item) => (

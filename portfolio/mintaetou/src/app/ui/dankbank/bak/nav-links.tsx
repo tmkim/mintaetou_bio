@@ -10,9 +10,10 @@ interface Navbar {
 }
 
 const links: Navbar[] = [
-  { name: 'Home', href: '/dashboard'},
-  { name: 'Dank Bank', href: '/dashboard/items'},
-  { name: 'T-Planet', href: '/dashboard/items/dining'},
+  { name: 'Home', href: '/'},
+  { name: 'Resume', href: '/Resume'},
+  { name: 'Dank Bank', href: '/DankBank'},
+  { name: 'T-Planet', href: '/T-Planet'},
 ];
 
 export default function ResponsiveNavbar() {

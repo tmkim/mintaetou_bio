@@ -725,7 +725,8 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
 };
 
   return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-10 flex items-center justify-center">
+      <div className="fixed inset-0 bg-black z-10 flex items-center justify-center"
+           style={{ backgroundColor: 'rgba(31, 41, 55, 0.5)' }}>
         <div className="bg-white w-[70%] max-w-4xl p-6 rounded-lg h-[55vh]">
             <form onSubmit={handleSubmit} className="h-full flex flex-col">
                 {/* Category Centered at the top */}

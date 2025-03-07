@@ -1,52 +1,63 @@
-import DankBankLogo from '@/app/ui/dankbank/dankbank-logo';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import { lusitana } from '@/app/ui/dankbank/fonts';
-import Image from 'next/image'
-
+'use client'
+import { useState } from 'react';
+import ContactModal from './ui/contact-modal';
 export default function Page() {
+
+  const [contactModal, setContactModal] = useState<boolean>(false);
+
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
-        <DankBankLogo />
-      </div>
-      <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-        <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
-          <div className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-black"/>
-          <div className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-black"/>
-          <div className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-black"/>
-          <p className={`${lusitana.className} antialiased text-xl text-gray-800 md:text-3xl md:leading-normal`}>
-            <strong>Welcome to the Dank Bank.</strong> Check out some of this{' '}
-            <a href="https://on.soundcloud.com/P8YiLvNyjjff8iTW6" className="text-blue-500">
-              dank music
-            </a>
-            , brought to you by Super Future and Wreckno.
-          </p>
-          <Link
-            href="/login"
-            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
+    <main className="text-gray-900">
+      <section id="hero" className="bg-white shadow-md">
+          <div className="text-center py-8 bg-green-500 text-white">
+              <p className="text-lg ml-45">(person)&nbsp;&nbsp;(great)&nbsp;&nbsp;&nbsp;(head)</p>
+              <h1 className="text-4xl font-bold">Tae-Min = Min Tae Tou</h1>
+              <p className="text-lg mt-2">Web Developer | Software Engineer | Tech Enthusiast</p>
+          </div>
+      </section>
+        
+      <section id="about" className="container mx-auto my-12 p-6 bg-white shadow-md rounded-lg">
+          <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+          <p className="text-gray-700">Brief introduction about yourself, your skills, and what you do.</p>
+      </section>
+      
+      <section id="projects" className="container mx-auto my-12 p-6">
+          <h2 className="text-2xl font-semibold mb-4">Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 bg-white shadow-md rounded-lg">
+                  <h3 className="text-xl font-semibold">Project 1</h3>
+                  <p className="text-gray-700">Short description of the project.</p>
+              </div>
+              <div className="p-6 bg-white shadow-md rounded-lg">
+                  <h3 className="text-xl font-semibold">Project 2</h3>
+                  <p className="text-gray-700">Short description of the project.</p>
+              </div>
+          </div>
+      </section>
+      
+      <section id="contact" className="container mx-auto my-12 p-6 bg-white shadow-md rounded-lg">
+          <h2 className="text-2xl font-semibold mb-4">Contact</h2>
+          <div className="mt-6 flex gap-4">
+          <button
+            className="flex items-center justify-center min-w-[160px] px-4 py-2 text-lg font-semibold bg-green-500 text-white rounded-md hover:bg-green-600"
+            onClick={() => setContactModal(true)}
           >
-            <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
-          </Link>
-        </div>
-        <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-          {/* Add Hero Images Here */}
-          <Image
-            src="/hero-desktop.png"
-            width={1000}
-            height={760}
-            className="hidden md:block" //<default> md:<medium screen> lg:<large screen>
-            alt="Screenshots of the dashboard project showing desktop version"
-          />
-          <Image
-            src="/hero-mobile.png"
-            width={560}
-            height={620}
-            className="block md:hidden"
-            alt="Screenshots of the dashboard project showing mobile version"
+            Send me an Email
+          </button>
+          <button
+            className="flex items-center justify-center min-w-[160px] px-4 py-2 text-lg font-semibold bg-green-500 text-white rounded-md hover:bg-green-600"
+          >
+            <a href="https://www.linkedin.com/in/tmk13" className="text-white hover:underline">Find me on LinkedIn</a>
+          </button>
+          </div>
+      </section>
+
+      {contactModal && (
+        <div>
+          <ContactModal 
+          onClose={() => setContactModal(false)} 
           />
         </div>
-      </div>
+      )}
     </main>
   );
 }

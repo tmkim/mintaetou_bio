@@ -1,8 +1,8 @@
 'use client'
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { Button } from "@/app/ui/dankbank/nav-button";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/app/ui/dankbank/dropdown-menu";
+import { Button } from "@/app/ui/nav-button";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/app/ui/dropdown-menu";
 import Link from 'next/link';
 import { GlobeAltIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/dankbank/fonts';
@@ -15,9 +15,10 @@ interface NavLink {
 }
 
 const links: NavLink[] = [
-    { name: 'Home', href: '/dashboard' },
-    { name: 'Dank Bank', href: '/dashboard/items' },
-    { name: 'T-Planet', href: '/dashboard/items/dining' },
+    { name: 'Home', href: '/'},
+    { name: 'Resume', href: '/Resume'},
+    { name: 'Dank Bank', href: '/DankBank'},
+    { name: 'T-Planet', href: '/T-Planet'},
     { name: 'Logout' }
 ];
 

@@ -1,7 +1,5 @@
 'use client'
-// components/ItemDetails.js
 import { Item } from "@/app/lib/dankbank/definitions";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import ImageCarousel from "./img-carousel";
@@ -70,14 +68,14 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item }) => {
                 return(
                     <div className="mt-2 flex items-center justify-between">
                         <h2 className="text-2xl font-semibold">
-                        <Link 
+                        <a 
                             href={getLink(item.category_data.website)} 
                             className="button" 
                             target="_blank" 
                             rel="noopener noreferrer"
                         >
                             {item.name}
-                        </Link>
+                        </a>
                         </h2>
                     </div>
                     
@@ -114,14 +112,14 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item }) => {
                         </div>
                     </div>
                     <div className="text-sm">
-                        <Link 
+                        <a 
                             href={getLink(item.category_data.gmap_url)} 
                             className="button" 
                             target="_blank" 
                             rel="noopener noreferrer"
                         >
                             {item.category_data.address}
-                        </Link>
+                        </a>
                     </div>
                     <div className="">
                         Cuisine: {item.category_data.cuisine}
@@ -154,14 +152,14 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item }) => {
                         Genre: {item.category_data.genre}
                     </div>
                     <div className="">
-                        <Link 
+                        <a 
                             href={getLink(item.category_data.website)} 
                             className="button" 
                             target="_blank" 
                             rel="noopener noreferrer"
                         >
                             {item.category_data.source} Link
-                        </Link>
+                        </a>
                         {/* Eventually would like to include an embed from appropriate source
                             Also maybe add album art or something for the image carousel
                         */}
@@ -175,24 +173,24 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item }) => {
                         {item.category_data.location}
                     </div>
                     <div className="text-sm">
-                        <Link 
+                        <a 
                             href={getLink(item.category_data.gmap_url)} 
                             className="button" 
                             target="_blank" 
                             rel="noopener noreferrer"
                         >
                             {item.category_data.address}
-                        </Link>
+                        </a>
                     </div>
                     <div>
-                        <Link 
+                        <a 
                             href={getLink(item.category_data.website)} 
                             className="button" 
                             target="_blank" 
                             rel="noopener noreferrer"
                         >
                             Link to Website
-                        </Link>
+                        </a>
                     </div>
                     </>
                 )
@@ -201,7 +199,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item }) => {
 
 
     return (
-        <div className="flow-root">
+        <div className="flow-root bg-white">
             <div className="inline-block min-w-full align-middle">
                 <div className="border-separate overflow-y-auto rounded-xl border-2 border-gray-400 border-4 border-solid flex flex-col text-xl"
                      style={{height: 'calc(102px + 70vh)'}}>

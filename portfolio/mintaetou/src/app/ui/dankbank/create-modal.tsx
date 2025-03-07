@@ -584,7 +584,8 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
 
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black flex items-center justify-center"
+             style={{ backgroundColor: 'rgba(31, 41, 55, 0.5)' }}>
             <div className="bg-white w-[70%] max-w-4xl p-6 rounded-lg h-[800px] max-h-[100vh]">
                 <form onSubmit={handleSubmit} className="h-full flex flex-col">
                     {/* Category Centered at the top */}

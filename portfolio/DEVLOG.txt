@@ -11,3 +11,15 @@ Ported over my backend and frontend from my DankBank project
     Continuing to look into frontend issues, figured out it's because nextjs is using latest version of Tailwind CSS (v4), which uses a different structure than v3
     Fixed the structure of my frontend with respect to new Tailwind CSS, all good now! 
     
+    Set up initial mockup of intro page
+    updated navbar and links
+
+    added Contact Me using formspree
+    updated modal backgrounds to use style={{ backgroundColor: 'rgba(31, 41, 55, 0.5)' }}
+
+    Things to fix in DankBank:
+        image upload browse needs format fix 
+        updating query effectively reloads entire page so you can't really type anything into search 
+            and UI is unnatural when updating filter
+        Make sure things look good with gray background 
+        Filter buttons could look prettier 

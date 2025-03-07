@@ -1,7 +1,8 @@
 import '@/app/globals.css';
 import { inter } from '@/app/ui/dankbank/fonts';
 import { AuthProvider } from "@/context/AuthContext";
-
+import Navbar from '@/app/ui/navbar';
+import { Suspense } from 'react';
 
 export default function RootLayout({
   children,
@@ -12,8 +13,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         <AuthProvider>
-          {children}
+        <div className="flex h-screen flex-col ">
+          <div className="w-full flex-none">
+            <Navbar />
+          </div>
+          <Suspense>
+            <div className="flex-grow bg-gray-100 ">{children}</div>
+          </Suspense>
+        </div>
         </AuthProvider>
+        <footer className="text-center py-6 bg-green-700 text-white">
+            <p>&copy; 2025 Tae-Min Kim. All rights reserved.</p>
+        </footer>
         </body>
     </html>
   );
