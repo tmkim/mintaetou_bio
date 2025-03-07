@@ -12,9 +12,10 @@ type ItemTableProps = {
   onRowClick: (item: Item) => void;
   data: Item[]
   refreshData: () => void;
+  sortOrder: (order: string) => void;
 };
 
-const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData }) => {
+const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, sortOrder }) => {
 
   // const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const [token, setToken] = useState<string | null>(null);
@@ -92,26 +93,41 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData }) 
           newOrder = "def"; // Reset to default sort
       }
     }
-
-    let sortedData = [...results]; // Start fresh each time when resetting to default
-
-    if (newOrder !== "def") {
-      sortedData.sort((a, b) => {
-        if (a[key] < b[key]) return newOrder === "asc" ? -1 : 1;
-        if (a[key] > b[key]) return newOrder === "asc" ? 1 : -1;
-        return 0;
-      });
-    } else {
-      sortedData.sort((a, b) => {
-        if (a["id"] < b["id"]) return newOrder === "def" ? -1 : 1;
-        if (a["id"] > b["id"]) return newOrder === "def" ? 1 : -1;
-        return 0;
-      }); // Reset to default (ID order)
+  
+    switch (newOrder){
+      case "asc":
+        sortOrder("&ordering=" + key)
+        break;
+      case "desc":
+        sortOrder("&ordering=-" + key)
+        break;
+      default:
+        sortOrder("")
     }
-
     setSortConfig({ key, sortOrder: newOrder });
-    setResults(sortedData);
+    refreshData();
   }
+
+
+  //   let sortedData = [...results]; // Start fresh each time when resetting to default
+
+  //   if (newOrder !== "def") {
+  //     sortedData.sort((a, b) => {
+  //       if (a[key] < b[key]) return newOrder === "asc" ? -1 : 1;
+  //       if (a[key] > b[key]) return newOrder === "asc" ? 1 : -1;
+  //       return 0;
+  //     });
+  //   } else {
+  //     sortedData.sort((a, b) => {
+  //       if (a["id"] < b["id"]) return newOrder === "def" ? -1 : 1;
+  //       if (a["id"] > b["id"]) return newOrder === "def" ? 1 : -1;
+  //       return 0;
+  //     }); // Reset to default (ID order)
+  //   }
+
+  //   setSortConfig({ key, sortOrder: newOrder });
+  //   setResults(sortedData);
+  // }
 
   const getSortArrow = (key: keyof Item) => {
     if (sortConfig.key !== key) return "";
@@ -130,7 +146,7 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData }) 
                     <span className="hover:bg-green-500 cursor-pointer px-4 py-2 rounded-xl" onClick={() => handleSort("name")}>Name {getSortArrow("name")}</span>
                   </th>
                   <th className="px-4 py-2 text-left pl-5 w-1/5">
-                  <span className="hover:bg-green-500 cursor-pointer px-4 py-2 rounded-xl" onClick={() => handleSort("name")}>Rating {getSortArrow("rating")}</span>
+                  <span className="hover:bg-green-500 cursor-pointer px-2 py-2 rounded-xl" onClick={() => handleSort("rating")}>Rating {getSortArrow("rating")}</span>
                   </th>
                   <th className="px-4 py-2 text-right pr-7 w-1/8"
                    style={{ visibility: token ? 'visible' : 'hidden' }}>

@@ -18,8 +18,23 @@ Ported over my backend and frontend from my DankBank project
     updated modal backgrounds to use style={{ backgroundColor: 'rgba(31, 41, 55, 0.5)' }}
 
     Things to fix in DankBank:
-        image upload browse needs format fix 
+        * image upload browse needs format fix 
         updating query effectively reloads entire page so you can't really type anything into search 
             and UI is unnatural when updating filter
-        Make sure things look good with gray background 
-        Filter buttons could look prettier 
+        * Make sure things look good with gray background 
+        * Filter buttons could look prettier 
+
+3/7
+    Alright let's make those fixes to DankBank then work on fleshing out my website.
+
+    > Image uploader:
+        ** updated image upload component!
+    > Filter buttons:
+        ** updated filter buttons!
+    > Pagination not working
+        ** basically fetcher was only saving first page of data by grabbing data.results 
+            ++ now grabs entire json() and grabbing count/results separately
+    > Sort is kinda broken too
+        -- looks like it's only sorting current page rather than sorting entire results then separating pages 
+        ++ fixed sorting by moving sort logic to the backend
+        ++ updated frontend to update search params based on sort 

@@ -19,15 +19,6 @@ type FilterChecks = {
   Travel: boolean;
 }
 
-const fetcher = async (url: string) => {
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error('Network response was not ok');
-  }
-  const r = await res.json()
-  return r.results;
-};
-
 const ItemsPage: React.FC = () => {
   // const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const [token, setToken] = useState<string | null>(null);
@@ -41,11 +32,13 @@ const ItemsPage: React.FC = () => {
   const queryParam = searchParams.get('query') || '';
   const pageParam = searchParams.get('page') || '1';
   const limitParam = searchParams.get('limit') || '10';
+  const orderParam = searchParams.get('ordering') || '';
 
   const [searchQuery, setSearchQuery] = useState<string>(queryParam);
   const [currentPage, setCurrentPage] = useState<number>(parseInt(pageParam, 10));
   const [pageLimit, setPageLimit] = useState<number>(parseInt(limitParam, 10));
   const [totalItems, setTotalItems] = useState<number>(0);
+  const [sortOrder, setSortOrder] = useState<string>(orderParam)
 
   const [createModal, setCreateModal] = useState<boolean>(false);
 
@@ -78,30 +71,46 @@ const ItemsPage: React.FC = () => {
     newUrl.searchParams.set('page', newPage.toString());
     newUrl.searchParams.set('limit', newLimit.toString());
 
+    newUrl.searchParams.delete('category');
     uniqueCategories.forEach((category) => {
       newUrl.searchParams.append('category', category);
     });
+    newUrl.searchParams.delete('ordering');
+    if (sortOrder !== ''){
+      newUrl.searchParams.append('ordering', sortOrder.split('=')[1]);
+    }
 
     window.history.pushState({}, '', newUrl.toString());
   };
 
   const selectedCategories = Object.keys(filterCheck).filter((key) => filterCheck[key as keyof FilterChecks]);
   const categoryParams = selectedCategories.length > 0 ? '&category=' + selectedCategories.join('&category=') : '';
-  const fetchURL = `http://localhost:8000/dankbank_back/items/?page=${currentPage}&query=${searchQuery}&limit=${pageLimit}${categoryParams}`
 
+  const fetchURL = `http://localhost:8000/dankbank_back/items/?page=${currentPage}&query=${searchQuery}&limit=${pageLimit}${categoryParams}${sortOrder}`
+
+  const fetcher = async (url: string) => {
+    console.log(url)
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const r = await res.json()
+    return r;
+  };
+  
   const { data, error } = useSWR(fetchURL, fetcher)
 
   useEffect(() => {
-    console.log("Updated data:", data);
-    if (data) {
-      setTotalItems(data.length); // Update total items from fetched data
+    console.log("Updated data:", data?.results);
+    if (data?.results) {
+      setTotalItems(data?.count); // Update total items from fetched data
     }
   }, [data]);
 
   // Call the updateQueryParams in response to changes in searchQuery, currentPage, and pageLimit
   useEffect(() => {
     updateQueryParams(searchQuery, currentPage, pageLimit);
-  }, [searchQuery, currentPage, pageLimit]);
+  }, [searchQuery, currentPage, pageLimit, sortOrder]);
 
   const [item, setItemDetail] = useState<Item | null>(null);
   const handleRowClick = (rowData: Item) => {
@@ -113,7 +122,7 @@ const ItemsPage: React.FC = () => {
     return <div>Error loading items</div>;
   }
 
-  if (!data) {
+  if (!data?.results) {
     return <div>Loading...</div>;
   }
 
@@ -180,8 +189,9 @@ const ItemsPage: React.FC = () => {
 
           <ItemTable
             onRowClick={handleRowClick}
-            data={data}
+            data={data.results}
             refreshData={() => mutate(fetchURL)}
+            sortOrder={setSortOrder}
           />
           
           {/* Page navigation buttons */}
@@ -205,7 +215,7 @@ const ItemsPage: React.FC = () => {
       {createModal && (
         <CreateModal 
         onClose={() => setCreateModal(false)} 
-        data={data}
+        data={data.results}
         refreshData={() => {mutate(fetchURL)}
         }/>
       )}

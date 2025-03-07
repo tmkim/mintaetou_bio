@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import action, api_view
 from rest_framework.reverse import reverse
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.filters import OrderingFilter
 from .models import Image, Item, Dining, Food, Media, SelectOption, Travel
 from .serializers import ImageSerializer, ItemSerializer, SelectOptionSerializer
 import boto3
@@ -137,6 +138,8 @@ class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     pagination_class = ItemPagination
+    filter_backends = [OrderingFilter]
+    ordering_fields = ['name', 'rating']
 
     def get_queryset(self):
         """
