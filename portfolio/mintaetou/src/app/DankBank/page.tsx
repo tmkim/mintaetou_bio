@@ -120,7 +120,6 @@ const ItemsPage: React.FC = () => {
   return (
     <main className="w-full mx-auto px-4">
       <div className="flex flex-col lg:flex-row lg:space-x-4">
-        {/* <Suspense fallback={<div>Loading search input...</div>}> */}
         {/* </Suspense> */}
         <div className="flex-grow flex-shrink-0 lg:basis-1/2">
           <div className="flex space-x-2 w-full">
@@ -148,9 +147,9 @@ const ItemsPage: React.FC = () => {
                   <label
                     key={index}
                     tabIndex={0}
-                    className={`cursor-pointer select-none p-2 border rounded-md transition-colors peer-checked:bg-blue-500 peer-checked:text-white ${filterCheck[key as keyof FilterChecks]
-                      ? "bg-blue-500 text-white"
-                      : "bg-gray-200 hover:bg-gray-300"
+                    className={`cursor-pointer select-none py-2 px-4 border-2 border-gray-400 border-solid rounded-xl transition-colors peer-checked:bg-blue-500 peer-checked:text-white ${filterCheck[key as keyof FilterChecks]
+                      ? "bg-blue-600 text-white"
+                      : "bg-white hover:bg-gray-300"
                     }`}
                   >
                     <input
