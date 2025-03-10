@@ -91,7 +91,7 @@ const Navbar = () => {
           <GlobeAltIcon className="h-6 md:h-8 w-6 md:w-8 rotate-[15deg] text-white" />
           <Link
             className={`${lusitana.className} text-3xl text-white pl-2`}
-            href="/dashboard/"
+            href="/"
           >
             Tae-Min Kim
           </Link>

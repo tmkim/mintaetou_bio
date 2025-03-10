@@ -42,3 +42,10 @@ Ported over my backend and frontend from my DankBank project
         ++ restructured how data is stored -> using state to prevent re-renders
 
     Alright I think we're pretty set on Dank Bank for now! 
+
+3/8
+    Alright so did a bit of work on restructuring my Dank Bank git project, and adding some extra features for login/logout.
+
+    Don't really need to worry about that for my bio at the moment so we can fix that up later.
+    Now let's work on my home page!
+    
