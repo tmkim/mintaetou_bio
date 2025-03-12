@@ -18,15 +18,15 @@ export default function Page() {
         
       <section id="about" className="container mx-auto my-12 p-6 bg-white shadow-md rounded-lg">
           <h2 className="text-2xl font-semibold mb-4">♪ Welcome To My Life ♪</h2>
-          <p className="">
+          <p className="text-xl">
             What's up y'all? I'm Tae-Min, a Software Engineer with eight years of experience developing products
             and helping clients implement solutions to exceed their business requirements. I enjoy innovating solutions 
-            for interesting problems, but most importantly empowering and making life easier for others. With a strong 
+            for interesting problems, but most importantly empowering others and making life easier. With a strong 
             background in object oriented programming, database management, and full stack development, I am very confident
             in my fundamental coding skills and my ability to learn new technologies. 
           </p>
           <br/>
-          <p>
+          <p className="text-xl">
             Outside of work, I love to seek new experiences and broaden my perspective of the world. Whether I'm trying new food,
             traveling to new places, or participating in new activities, I like to be active in learning more about what makes people
             happy, and spreading that joy with others. There are so many awesome experiences in the world, you will never know what 

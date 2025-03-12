@@ -20,7 +20,7 @@ export default function UnderConstruction() {
         <p className="mt-2 text-gray-600">
           We're working on something awesome! Check back soon.<br/>
           For now you can check out the project on&nbsp;
-          <a href="http://www.github.com/tmkim/t-planet"
+          <a href="http://www.github.com/tmkim/tcgbh"
           className="font-semibold text-blue-500 text-lg hover:text-blue-700 transition-colors duration-300"
           >Github</a>
         </p>

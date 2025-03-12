@@ -126,7 +126,7 @@ const ItemsPage: React.FC = () => {
   }
 
   return (
-    <main className="w-full mx-auto px-4">
+    <main className="w-full mx-auto px-4 py-4">
       <div className="flex flex-col lg:flex-row lg:space-x-4">
         {/* </Suspense> */}
         <div className="flex-grow flex-shrink-0 lg:basis-1/2">

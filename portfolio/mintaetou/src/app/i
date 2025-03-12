@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function UnderConstruction() {
   return (
-    <div className="flex min-h-[80vh] flex-col items-center justify-center bg-gray-100 p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -18,11 +18,7 @@ export default function UnderConstruction() {
           Page Under Construction
         </h1>
         <p className="mt-2 text-gray-600">
-          We're working on something awesome! Check back soon.<br/>
-          For now you can check out the project on&nbsp;
-          <a href="http://www.github.com/tmkim/t-planet"
-          className="font-semibold text-blue-500 text-lg hover:text-blue-700 transition-colors duration-300"
-          >Github</a>
+          We're working on something awesome! Check back soon.
         </p>
         <Link href="/">
           <button className="mt-6 rounded-lg bg-blue-600 px-5 py-2 text-white transition hover:bg-blue-700">

@@ -49,3 +49,8 @@ Ported over my backend and frontend from my DankBank project
     Don't really need to worry about that for my bio at the moment so we can fix that up later.
     Now let's work on my home page!
     
+3/10
+    Let's update my home page with an about me and show off some projects 
+
+3/12
+    Added construction page for Rave Map, TCG Bounty Hunter 
