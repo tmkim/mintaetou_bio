@@ -53,4 +53,5 @@ Ported over my backend and frontend from my DankBank project
     Let's update my home page with an about me and show off some projects 
 
 3/12
-    Added construction page for Rave Map, TCG Bounty Hunter 
+    Added construction page for Rave Map, TCG Bounty Hunter, T-Planet
+    Having some issues with tailwindcss module
