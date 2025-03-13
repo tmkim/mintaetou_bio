@@ -55,3 +55,14 @@ Ported over my backend and frontend from my DankBank project
 3/12
     Added construction page for Rave Map, TCG Bounty Hunter, T-Planet
     Having some issues with tailwindcss module
+
+    Successfully deployed to vercel without errors, but getting 404_NOT_FOUND
+
+3/13
+    OK! Front end is officially deployed on Vercel. 
+    Next I have to deploy my backend somewhere then update API calls.
+
+        -- noticed one issue with navbar/footer. Need to make navbar sticky?
+    ++ fixed navbar
+    ++ added login/logout functionality
+    ++ updated home banner 

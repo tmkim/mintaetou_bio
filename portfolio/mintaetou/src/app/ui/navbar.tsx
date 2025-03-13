@@ -17,11 +17,11 @@ interface NavLink {
 const links: NavLink[] = [
     { name: 'Home', href: '/'},
     { name: 'Resume', href: '/Resume'},
-    { name: 'DankBank', href: '/DankBank'},
-    { name: 'T-Planet', href: '/T-Planet'},
-    { name: 'RaveMap', href: '/RaveMap'},
-    { name: 'TCG Bounty Hunter', href: '/TCG-Bounty-Hunter'},
-    { name: 'Logout' }
+    { name: 'Dank Bank', href: '/DankBank'},
+    { name: 'T Planet', href: '/T-Planet'},
+    { name: 'Rave Map', href: '/RaveMap'},
+    { name: 'Bounty Hunter', href: '/TCG-Bounty-Hunter'},
+    { name: '' }
 ];
 
 const Navbar = () => {
@@ -33,35 +33,46 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   useEffect(() => {
+    if (isLoggedIn){
+      links[links.length-1].name = 'Logout'
+      links[links.length-1].href = '/'
+    } else{
+      links[links.length-1].name = 'Login'
+      links[links.length-1].href = '/login'
+    }
+  }, [isLoggedIn])
+
+  useEffect(() => {
     const resizeObserver = new ResizeObserver(() => {
       updateLinks();
     });
-    setIsLoggedIn(!!localStorage.getItem("token"));
-
+    const updateAuthState = () => {
+      setIsLoggedIn(!!localStorage.getItem("token"));
+    };
+  
+    window.addEventListener("storage", updateAuthState);
+    
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current);
     }
 
     return () => {
+      window.removeEventListener("storage", updateAuthState);
       if (containerRef.current) {
         resizeObserver.unobserve(containerRef.current);
       }
     };
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token"); // Remove token
-    setIsLoggedIn(false); // Update state
-    alert("Logged out successfully!");
-    router.push("/login"); // Redirect to login
-  };
-
-  if (isLoggedIn) {
-    const logoutIndex = links.findIndex(link => link.name === "Logout");
-    if (logoutIndex !== -1) {
-      links[logoutIndex].onClick = handleLogout;
+  const handleLogInOut = () => {
+    if (isLoggedIn){
+      localStorage.removeItem("token"); // Remove token
+      setIsLoggedIn(false); // Update state
+      router.push("/redirect");
+    } else{
+      router.push("/login"); // Redirect to login
     }
-  }
+  };
 
   const updateLinks = () => {
     if (containerRef.current) {
@@ -99,21 +110,19 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Right Side: Desktop Navigation */}
+        {/* Right Side: Navigation */}
         <div className="flex items-center w-full overflow-x-hidden" ref={containerRef}>
-          {/* Desktop NavLinks (visible on medium screens and above) */}
+          {/* NavLinks (visible on medium screens and above) */}
           <div className="hidden md:flex items-center text-white text-2xl w-full" ref={containerRef}>
-            {visibleLinks.map((link, index) => 
+          {visibleLinks.map((link, index) => 
               link.href ? (
                 <a key={index} href={link.href} className="hover:underline hover:text-blue-300 min-w-[150px] text-center">
                   {link.name}
                 </a>
-              ) : ( 
-                isLoggedIn ? (
-                <button key={index} onClick={link.onClick} className="hover:underline hover:text-blue-300 min-w-[150px] text-center">
-                  {link.name}
+              ) : (
+                <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 min-w-[150px] text-center">
+                  {isLoggedIn ? "Logout" : "Login"}
                 </button>
-                ) : null
               )
             )}
 

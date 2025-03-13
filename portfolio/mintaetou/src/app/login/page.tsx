@@ -36,14 +36,14 @@ export default function LoginPage() {
       const data = await response.json();
       localStorage.setItem("token", data.access); // Save token in localStorage
       alert("Login successful!");
-      router.push('/dashboard/items')
+      router.push('/redirect')
     } catch (err) {
       setError("Something went wrong.");
     }
   };
 
   return (
-    <div>
+    <div className="min-h-[90vh]">
       <h1>Login</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>

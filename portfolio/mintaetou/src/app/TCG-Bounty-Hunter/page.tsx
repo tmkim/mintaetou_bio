@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function UnderConstruction() {
   return (
-    <div className="flex min-h-[80vh] flex-col items-center justify-center bg-gray-100 p-4">
+    <div className="flex min-h-[90vh] flex-col items-center justify-center bg-gray-100 p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}

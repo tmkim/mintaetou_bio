@@ -10,24 +10,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>
-        <AuthProvider>
-        <div className="flex h-screen flex-col bg-gray-100 overflow-y-auto">
-          <div className="w-full flex-none sticky top-0">
-            <Navbar />
-          </div>
-          <Suspense>
-            {/* {children} */}
-            <div className="">{children}</div>
-            <div className="text-center py-6 bg-green-700 text-white">
-              <p>&copy; 2025 Tae-Min Kim. All rights reserved.</p>
-            </div>
-          </Suspense>
-        </div>
-        </AuthProvider>
+<html lang="en">
+  <body className={`${inter.className} antialiased`}>
+    <AuthProvider>
+      <div className="w-full flex-none sticky top-0">
+        <Navbar />
+      </div>
+      <div className="flex flex-col min-h-screen bg-gray-100">
+        <Suspense>
+          <div className="flex-grow">{children}</div>
+        </Suspense>
+        <footer className="text-center py-6 bg-green-700 text-white">
+          <p>&copy; 2025 Tae-Min Kim. All rights reserved.</p>
+        </footer>
+      </div>
+    </AuthProvider>
+  </body>
+</html>
 
-      </body>
-    </html>
   );
 }

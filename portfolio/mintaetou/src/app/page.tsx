@@ -1,19 +1,46 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ContactModal from './ui/contact-modal';
 export default function Page() {
 
   const [contactModal, setContactModal] = useState<boolean>(false);
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    window.dispatchEvent(new Event("storage")); 
+    setToken(localStorage.getItem("token"));
+  }, []);
 
   return (
     <main className="text-gray-900">
-      <section id="hero" className="bg-white shadow-md">
-          <div className="text-center py-8 bg-green-500 text-white">
-              <p className="text-lg ml-45">(person)&nbsp;&nbsp;(great)&nbsp;&nbsp;&nbsp;(head)</p>
-              <h1 className="text-4xl font-bold">Tae-Min = Min Tae Tou</h1>
-              <p className="text-lg mt-2">Software Engineer | Community Leader | Thrill Seeker</p>
-              <h2> This will be replaced by an image banner with some things I love</h2>
+      <section id="hero" className="bg-white shadow-md mt-12">
+        <div className="relative w-full h-64 flex items-center justify-center overflow-hidden">
+          {/* Left Image */}
+          <div 
+            className="absolute z-10 left-0 top-0 w-[33%] h-full bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/banner_turtle.jpg')",
+              clipPath: "polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%)",
+            }}
+          ></div>
+
+          {/* Center Content */}
+          <div className="relative z-0 bg-green-500 w-full h-full flex flex-col items-center justify-center text-white text-center px-4">
+            <p className="text-sm">(person) (great) (head)</p>
+            <h1 className="text-2xl font-bold">Tae-Min = Min Tae Tou</h1>
+            <p className="text-lg">Software Engineer | Community Leader | Thrill Seeker</p>
+            <p className="text-sm opacity-80">This will be replaced by an image banner with some things I love</p>
           </div>
+
+          {/* Right Image */}
+          <div 
+            className="absolute z-10 right-0 top-0 w-[33%] h-full bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/banner_disc.jpg')",
+              clipPath: "polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            }}
+          ></div>
+        </div>
       </section>
         
       <section id="about" className="container mx-auto my-12 p-6 bg-white shadow-md rounded-lg">
@@ -31,6 +58,10 @@ export default function Page() {
             traveling to new places, or participating in new activities, I like to be active in learning more about what makes people
             happy, and spreading that joy with others. There are so many awesome experiences in the world, you will never know what 
             you don't know unless you step outside your comfort zone and embrace the unknown. 
+          </p>
+          <br/>
+          <p className="text-xl">
+            Check out some of my projects and hobbies below!
           </p>
       </section>
       
@@ -168,13 +199,13 @@ export default function Page() {
           <h2 className="text-2xl font-semibold mb-4">Contact</h2>
           <div className="mt-6 flex gap-4">
           <button
-            className="flex items-center justify-center min-w-[160px] px-4 py-2 text-lg font-semibold bg-green-500 text-white rounded-md hover:bg-green-600"
+            className="flex items-center justify-center min-w-[160px] px-4 py-2 text-lg font-semibold bg-green-500 rounded-md hover:bg-green-600 hover:cursor-pointer"
             onClick={() => setContactModal(true)}
           >
-            Send me an Email
+            <p className="text-white hover:underline">Send me an Email</p>
           </button>
           <button
-            className="flex items-center justify-center min-w-[160px] px-4 py-2 text-lg font-semibold bg-green-500 text-white rounded-md hover:bg-green-600"
+            className="flex items-center justify-center min-w-[160px] px-4 py-2 text-lg font-semibold bg-green-500 rounded-md hover:bg-green-600"
           >
             <a href="https://www.linkedin.com/in/tmk13" className="text-white hover:underline">Find me on LinkedIn</a>
           </button>

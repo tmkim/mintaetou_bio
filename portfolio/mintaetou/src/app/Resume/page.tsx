@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Briefcase, GraduationCap, Code, Download, Linkedin, Github } from "lucide-react";
 
 export default function ResumePage() {
-  const resumeUrl = "/TaeMinKim_Resume_Fullstack_Developer.pdf"; // Ensure the file is in /public
+  const resumeUrl = "/TaeMinKim_Resume_Software_Engineer.pdf"; // Ensure the file is in /public
 
   return (
     <div className="max-w-4xl mx-auto p-6 text-gray-800">
