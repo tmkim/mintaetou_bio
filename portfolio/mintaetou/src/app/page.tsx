@@ -35,7 +35,7 @@ export default function Page() {
       </section>
       
       <section id="projects" className="container mx-auto my-12 p-6">
-          <h2 className="text-3xl font-semibold mb-4">Projects</h2>
+        <h2 className="text-3xl font-semibold mb-4">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 bg-white shadow-md border rounded-lg">
                   <h3 className="text-2xl font-semibold">
@@ -122,6 +122,44 @@ export default function Page() {
                     className="font-semibold text-blue-500 underline hover:text-blue-700 transition-colors duration-300"
                     >TCG CSV</a> API
                   </pre>
+              </div>
+          </div>
+      </section>
+
+      <section id="hobbies" className="container mx-auto my-12 p-6">
+        <h2 className="text-2xl font-semibold mb-4">Hobbies (insert image carousel + descriptions)</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 bg-white shadow-md border rounded-lg">
+                <h1 className="text-2xl font-semibold">
+                  Activities
+                </h1>
+                <p>
+                  Disc Golf, Skiing, Swimming, Amigurumi...
+                </p>
+              </div>
+              <div className="p-6 bg-white shadow-md border rounded-lg">
+                <h1 className="text-2xl font-semibold">
+                  Cooking
+                </h1>
+                <p>
+                  Add some photos of things that I've cooked...
+                </p>
+              </div>
+              <div className="p-6 bg-white shadow-md border rounded-lg">
+                <h1 className="text-2xl font-semibold">
+                  Gaming
+                </h1>
+                <p>
+                  Some of my favorite games - WoW, Melee, Animal Crossing, Valorant ...
+                </p>
+              </div>
+              <div className="p-6 bg-white shadow-md border rounded-lg">
+                <h1 className="text-2xl font-semibold">
+                  Travel
+                </h1>
+                <p>
+                  Festivals, Restaurants, Vacations ...
+                </p>
               </div>
           </div>
       </section>

@@ -13,19 +13,20 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         <AuthProvider>
-        <div className="flex h-screen flex-col bg-gray-100">
-          <div className="w-full flex-none">
+        <div className="flex h-screen flex-col bg-gray-100 overflow-y-auto">
+          <div className="w-full flex-none sticky top-0">
             <Navbar />
           </div>
           <Suspense>
             {/* {children} */}
-            <div className="overflow-y-auto">{children}</div>
+            <div className="">{children}</div>
+            <div className="text-center py-6 bg-green-700 text-white">
+              <p>&copy; 2025 Tae-Min Kim. All rights reserved.</p>
+            </div>
           </Suspense>
         </div>
         </AuthProvider>
-        <footer className="text-center py-6 mt-4 bg-green-700 text-white">
-            <p>&copy; 2025 Tae-Min Kim. All rights reserved.</p>
-        </footer>
+
       </body>
     </html>
   );
