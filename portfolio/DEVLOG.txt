@@ -66,3 +66,7 @@ Ported over my backend and frontend from my DankBank project
     ++ fixed navbar
     ++ added login/logout functionality
     ++ updated home banner 
+
+3/14
+    Successfully deployed backend using AWS EC2!
+    Now I have to update API calls to use the new API address - using env 

@@ -30,7 +30,10 @@ const fetcher = async (url: string) => {
 };
 
 const ItemsPage: React.FC = () => {
-  // const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
+  
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  console.log(apiUrl)
+
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
@@ -96,7 +99,7 @@ const ItemsPage: React.FC = () => {
   const selectedCategories = Object.keys(filterCheck).filter((key) => filterCheck[key as keyof FilterChecks]);
   const categoryParams = selectedCategories.length > 0 ? '&category=' + selectedCategories.join('&category=') : '';
 
-  const fetchURL = `http://localhost:8000/dankbank_back/items/?page=${currentPage}&query=${searchQuery}&limit=${pageLimit}${categoryParams}${sortOrder}`
+  const fetchURL = apiUrl + `items/?page=${currentPage}&query=${searchQuery}&limit=${pageLimit}${categoryParams}${sortOrder}`
   
   const { data, error } = useSWR(fetchURL, fetcher)
   const [results, setResults] = useState<Item[]>(data?.results);

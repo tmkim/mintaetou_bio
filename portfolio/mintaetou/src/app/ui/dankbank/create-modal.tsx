@@ -16,6 +16,8 @@ interface CreateProps {
 {/* export default function Form() {   */ }
 const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     // Category Select
     const categories: string[] = ['Dining', 'Food', 'Media', 'Travel'];
     const [selectedCategory, setSelectedCategory] = useState<string>('');
@@ -45,9 +47,9 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
 
     useEffect(() => {
         // Fetch items with category "Dining"
-        const fetchSelectOptions = async () => {
+      const fetchSelectOptions = async () => {
             try {
-              const response = await fetch('http://localhost:8000/dankbank_back/selectoption/?category=Location');
+              const response = await fetch(apiUrl + 'selectoption/?category=Location');
               const data = await response.json();
               console.log(data); // Log the data to inspect its structure
           
@@ -64,7 +66,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
             }
 
             try {
-                const response = await fetch('http://localhost:8000/dankbank_back/selectoption/?category=Source');
+                const response = await fetch(apiUrl + 'selectoption/?category=Source');
                 const data = await response.json();
                 console.log(data); // Log the data to inspect its structure
             
@@ -226,7 +228,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
     
         try {
             // Step 1: Send Form Data (Including Image URLs)
-            const itemResponse = await fetch('http://localhost:8000/dankbank_back/items/', {
+            const itemResponse = await fetch(apiUrl + 'items/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -256,7 +258,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
                 });
     
                 console.log(imageFormData); 
-                const uploadResponse = await fetch('http://localhost:8000/dankbank_back/image/', {
+                const uploadResponse = await fetch(apiUrl + 'image/', {
                     method: 'POST',
                     body: imageFormData,
                 });

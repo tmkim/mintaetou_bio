@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const ImageCarousel = ({ itemId }: { itemId: number }) => {
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     const [images, setImages] = useState<any[]>([]); // State to hold the images
     const [currentIndex, setCurrentIndex] = useState<number>(0); // State to track current image index
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // State to track if the modal is open
@@ -11,7 +14,7 @@ const ImageCarousel = ({ itemId }: { itemId: number }) => {
     // Fetch images when component mounts or when itemId changes
     useEffect(() => {
         const fetchImages = async () => {
-            const response = await fetch(`http://localhost:8000/dankbank_back/image/?item=${itemId}`);
+            const response = await fetch(apiUrl + `image/?item=${itemId}`);
             const data = await response.json();
             console.log(data)
             setImages(data.results); // Assuming your response contains the image data in "results"

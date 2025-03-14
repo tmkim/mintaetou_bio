@@ -4,6 +4,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function LoginPage() {
+
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -20,7 +23,7 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:8000/dankbank_back/login/", {
+      const response = await fetch(apiUrl + "login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

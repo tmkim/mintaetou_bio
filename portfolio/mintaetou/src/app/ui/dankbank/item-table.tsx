@@ -18,6 +18,8 @@ type ItemTableProps = {
 
 const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, sortOrder, setData }) => {
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   // const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const [token, setToken] = useState<string | null>(null);
   useEffect(() => {
@@ -49,7 +51,7 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, so
   const handleDelete = async () => {
     if (itemToDelete) {
       try {
-        const response = await fetch(`http://localhost:8000/dankbank_back/items/${itemToDelete.id}/`, {
+        const response = await fetch(apiUrl+ `items/${itemToDelete.id}/`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
