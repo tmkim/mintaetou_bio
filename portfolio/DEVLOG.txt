@@ -70,3 +70,12 @@ Ported over my backend and frontend from my DankBank project
 3/14
     Successfully deployed backend using AWS EC2!
     Now I have to update API calls to use the new API address - using env 
+
+    Ok so i've been spending today getting everything to work together properly.
+    Configuring gunicorn and nginx on the EC2 instance to get the backend server running.
+    Running into some issues with mismatch of http and https (backend using http, frontend using https)
+    Went ahead and bought tmkim.bio domain to make things easier.
+    Setting up AWS Load Balancer to help with https-http
+        (currently waiting for certificate approval)
+
+    Updated login form to look more professional

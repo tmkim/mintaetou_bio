@@ -16,7 +16,7 @@ export default function RootLayout({
       <div className="w-full flex-none sticky top-0">
         <Navbar />
       </div>
-      <div className="flex flex-col min-h-screen bg-gray-100">
+      <div className="flex flex-col min-h-screen bg-gray-300">
         <Suspense>
           <div className="flex-grow">{children}</div>
         </Suspense>
