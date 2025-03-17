@@ -61,7 +61,7 @@ export default function Page() {
           </p>
           <br/>
           <p className="text-xl">
-            Check out some of my projects and hobbies below!
+            Check out some of my projects that I personally use, and my favorite hobbies below!
           </p>
       </section>
       
@@ -165,7 +165,7 @@ export default function Page() {
                   Activities
                 </h1>
                 <p>
-                  Disc Golf, Skiing, Swimming, Amigurumi...
+                  Disc Golf, Skiing, Swimming, Kendama...
                 </p>
               </div>
               <div className="p-6 bg-white shadow-md border rounded-lg">
