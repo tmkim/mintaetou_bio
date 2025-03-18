@@ -43,8 +43,15 @@ export default function ResumePage() {
           </div>
           <p className="text-gray-600"></p>
           <ul className="list-disc list-inside text-gray-700">
-            <li>Developed a blog web app for users to share and review experiences, leveraging Django Rest Framework, Next.js, Tailwind CSS, PostgreSQL, and AWS S3 for dynamic content management</li>
-            <li>Built a social studying web app with interactive practice tests and flashcards using Next.js, RESTful APIs, TypeScript, Tailwind CSS, and PostgreSQL, enhancing student engagement</li>
+            <li>
+              Developed interactive full-stack educational tools using Django and Next.js, increasing student engagement and contributing to measurable improvements in class performance
+            </li>
+            <li>
+              Designed, built, and deployed full-stack web applications for personal projects and freelance clients, leveraging Django, Next.js, PostgreSQL, AWS S3, and RESTful APIs to deliver high-performance solutions
+            </li>
+            <li>
+              Revamped and modernized legacy applications, migrating outdated systems to a Django backend with a Next.js frontend, significantly improving performance, maintainability, and user experience
+            </li>
           </ul>
         </div>
 
@@ -59,10 +66,18 @@ export default function ResumePage() {
           <h2 className="text-lg font-semibold"></h2>
           <p className="text-gray-600"></p>
           <ul className="list-disc list-inside text-gray-700">
-            <li>Developed Python applications which manage customer communications by transforming large data files into customer documents and coordinating both physical and digital communications</li>
-            <li>Led a six-month project to develop a large-scale application, using agile methodology to work closely with the client, delivering the project early and training the client on best practices for maintenance</li>
-            <li>Increased team productivity by mentoring junior developers in refactoring legacy applications, accelerating the delivery time of over 100 applications an average of 20%</li>
-            <li>Improved testing speed and integrity by automating regression testing for PDF files, resulting in fewer bug reports and improved troubleshooting</li>
+            <li>
+              Engineered high-performance Python applications to process and transform large data files into customer documents, streamlining both physical and digital customer communications for enterprise clients
+            </li>  
+            <li>
+              Led a six-month development project for a large-scale application, collaborating closely with the client using Agile methodology, delivering the solution ahead of schedule and providing hands-on training in best practices for long-term maintenance
+            </li>  
+            <li>
+              Boosted team productivity by mentoring junior developers and spearheading refactors of legacy services, reducing technical debt and accelerating the delivery of 100+ applications by an average of 20%
+            </li>  
+            <li>
+              Automated regression testing for PDF processing, significantly improving testing speed and reducing bug reports, leading to faster issue resolution and a more stable product
+            </li>  
           </ul>
         </div>
 
@@ -75,9 +90,15 @@ export default function ResumePage() {
             <h2 className="text-lg font-semibold">Lansing, MI</h2>
           </div>
           <ul className="list-disc list-inside text-gray-700">
-            <li>Developed a full-stack application using SQL Server and VB.NET to handle services for millions of customers, replacing the client’s legacy system, finishing the project on time and under budget</li>
-            <li>Improved database performance by optimizing large queries and normalizing the database, reducing API response times by up to 30% and increasing data integrity for third-party sales</li>
-            <li>Built RESTful APIs using VB.NET, enabling third-party vendors to securely query sensitive data.</li>
+            <li>
+              Developed back-end services using SQL Server and VB.NET to successfully replace a legacy system and support services for millions of customers, delivering on-time and under budget
+            </li>
+            <li>
+              Spearheaded database optimization, improving query performance by 30% through advanced normalization and index strategies, resulting in faster API response times and enhanced data integrity
+            </li>
+            <li>
+              Engineered secure RESTful APIs in VB.NET, streamlining data access and improving integration capabilities
+            </li>
           </ul>
         </div>
 
@@ -87,9 +108,12 @@ export default function ResumePage() {
             <h2 className="text-lg font-semibold">Centennial, CO</h2>
           </div>
           <ul className="list-disc list-inside text-gray-700">
-            <li>Maintained multiple versions of the company’s software using VB.NET and proprietary software to develop new features and fix bug reports in a production environment</li>
-            <li>Improved internal communications across several client sites by developing a full-stack web application using SQL Server and VB.NET, receiving very positive feedback from users</li>
-            <li>Accelerated the process of updating annual forms by building Python scripts to parse XML files and produce mapping files, saving over $200,000 annually</li>
+            <li>
+              Led maintenance and enhancement efforts on multiple software versions using VB.NET, delivering critical bug fixes and feature upgrades in a live production environment while ensuring minimal downtime
+            </li>
+            <li>
+              Developed and deployed a full-stack web application with SQL Server and VB.NET, improving internal communication and workflow efficiency across multiple client sites
+            </li>
           </ul>
         </div>
       </section>
