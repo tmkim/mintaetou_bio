@@ -26,10 +26,8 @@ export default function Page() {
 
           {/* Center Content */}
           <div className="relative z-0 bg-green-500 w-full h-full flex flex-col items-center justify-center text-white text-center px-4">
-            <p className="text-sm">(person) (great) (head)</p>
-            <h1 className="text-2xl font-bold">Tae-Min = Min Tae Tou</h1>
+            <h1 className="text-2xl font-bold">Tae-Min Kim</h1>
             <p className="text-lg">Software Engineer | Community Leader | Thrill Seeker</p>
-            <p className="text-sm opacity-80">This will be replaced by an image banner with some things I love</p>
           </div>
 
           {/* Right Image */}
@@ -50,12 +48,12 @@ export default function Page() {
             and helping clients implement solutions to exceed their business requirements. I enjoy innovating solutions 
             for interesting problems, but most importantly empowering others and making life easier. With a strong 
             background in object oriented programming, database management, and full stack development, I am very confident
-            in my fundamental coding skills and my ability to learn new technologies. 
+            in my technical skills and have a strong passion for mentoring and empowering others.
           </p>
           <br/>
           <p className="text-xl">
-            Outside of work, I love to seek new experiences and broaden my perspective of the world. Whether I'm trying new food,
-            traveling to new places, or participating in new activities, I like to be active in learning more about what makes people
+            Outside of work, I love to seek new experiences and broaden my perspective of the world. Whether I'm tasting new flavors,
+            traveling to new places, or trying new activities, I like to be active in learning more about what makes people
             happy, and spreading that joy with others. There are so many awesome experiences in the world, you will never know what 
             you don't know unless you step outside your comfort zone and embrace the unknown. 
           </p>
