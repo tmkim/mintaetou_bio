@@ -79,3 +79,9 @@ Ported over my backend and frontend from my DankBank project
         (currently waiting for certificate approval)
 
     Updated login form to look more professional
+
+3/19
+    Full stack is officially deployed!
+    --- media genre still saying "Other:"
+    --- need to implement debouncing for search 
+    --- having trouble uploading images to AWS 
