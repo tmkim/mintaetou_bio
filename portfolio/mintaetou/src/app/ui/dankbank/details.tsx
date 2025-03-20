@@ -158,7 +158,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item }) => {
                             target="_blank" 
                             rel="noopener noreferrer"
                         >
-                            {item.category_data.source} Link
+                            {getSource(String(item.category_data.source))} Link
                         </a>
                         {/* Eventually would like to include an embed from appropriate source
                             Also maybe add album art or something for the image carousel
