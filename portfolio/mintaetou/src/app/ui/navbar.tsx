@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/app/ui/nav-button";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/app/ui/dropdown-menu";
 import Link from 'next/link';
-import { GlobeAltIcon } from '@heroicons/react/24/outline';
+import { GlobeAltIcon, PowerIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/dankbank/fonts';
 import { useRouter } from "next/navigation";
 
@@ -15,13 +15,13 @@ interface NavLink {
 }
 
 const links: NavLink[] = [
+    { name: 'Login', href:'/login' },
     { name: 'Home', href: '/'},
     { name: 'Resume', href: '/Resume'},
-    { name: 'Dank Bank', href: '/DankBank'},
-    { name: 'T Planet', href: '/T-Planet'},
-    { name: 'Rave Map', href: '/RaveMap'},
-    { name: 'Bounty Hunter', href: '/TCG-Bounty-Hunter'},
-    { name: '' }
+    { name: 'DankBank', href: '/DankBank'},
+    { name: 'TPlanet', href: '/T-Planet'},
+    { name: 'RaveMap', href: '/RaveMap'},
+    { name: 'BountyHunter', href: '/TCG-Bounty-Hunter'}
 ];
 
 const Navbar = () => {
@@ -31,16 +31,6 @@ const Navbar = () => {
   const [hiddenLinks, setHiddenLinks] = useState<NavLink[]>([]);
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
-  useEffect(() => {
-    if (isLoggedIn){
-      links[links.length-1].name = 'Logout'
-      links[links.length-1].href = '/'
-    } else{
-      links[links.length-1].name = 'Login'
-      links[links.length-1].href = '/login'
-    }
-  }, [isLoggedIn])
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(() => {
@@ -70,8 +60,10 @@ const Navbar = () => {
       setIsLoggedIn(false); // Update state
       router.push("/redirect");
     } else{
+      setIsLoggedIn(true)
       router.push("/login"); // Redirect to login
     }
+
   };
 
   const updateLinks = () => {
@@ -115,14 +107,14 @@ const Navbar = () => {
           {/* NavLinks (visible on medium screens and above) */}
           <div className="hidden md:flex items-center text-white text-2xl w-full" ref={containerRef}>
           {visibleLinks.map((link, index) => 
-              link.href ? (
-                <a key={index} href={link.href} className="hover:underline hover:text-blue-300 min-w-[150px] text-center">
+              link.name === 'Login' ? (
+                <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 hover:cursor-pointer min-w-[50px] mr-20 text-center">
+                  <PowerIcon/>
+                </button>
+              ) : (
+                <a key={index} href={link.href} className="hover:underline hover:text-blue-300 mr-20 text-left">
                   {link.name}
                 </a>
-              ) : (
-                <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 min-w-[150px] text-center">
-                  {isLoggedIn ? "Logout" : "Login"}
-                </button>
               )
             )}
 
@@ -130,13 +122,13 @@ const Navbar = () => {
             {hiddenLinks.length >= 2 && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="flex items-center gap-1 text-white text-2xl min-w-[150px]">
+                  <Button variant="ghost" className="flex items-center gap-1 text-white text-2xl min-w-[150px] hover:underline hover:text-blue-300 hover:cursor-pointer">
                     More <ChevronDown className="w-4 h-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent align="end" className="bg-green-700">
                   {hiddenLinks.map((link) => (
-                    <DropdownMenuItem key={link.name} asChild className="text-2xl">
+                    <DropdownMenuItem key={link.name} asChild className="text-2xl text-white hover:text-blue-300 hover:cursor-pointer">
                       <a href={link.href}>{link.name}</a>
                     </DropdownMenuItem>
                   ))}
@@ -159,7 +151,7 @@ const Navbar = () => {
       {/* Mobile Dropdown (shows only on small screens) */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-2 space-y-2">
-          {links.map((link) => (
+          {hiddenLinks.map((link) => (
             <a key={link.name} href={link.href} className="block p-2 text-white bg-green-700 rounded-md">
               {link.name}
             </a>

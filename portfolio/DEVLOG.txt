@@ -87,5 +87,9 @@ Ported over my backend and frontend from my DankBank project
     --- having trouble uploading images to AWS 
 
 3/20
-    -- fixed media genre 
-    
+    ++ fix media genre 
+    ++ implement debouncing
+    ++ clean up console.log calls
+    ++ clean up ui backgrounds 
+    -- fix login/logout button 
+    ++ fix MORE dropdown background 

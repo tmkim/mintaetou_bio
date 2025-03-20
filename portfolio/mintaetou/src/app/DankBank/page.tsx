@@ -136,12 +136,12 @@ const ItemsPage: React.FC = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 // onBlur={() => updateQueryParams(searchQuery, 1, pageLimit)}
               />
-            <button
+            {token && <button
               className="flex items-center justify-center min-w-[160px] p-2 text-lg font-semibold bg-green-500 text-white rounded-md hover:bg-green-600"
               onClick={() => setCreateModal(true)}
             >
               <PlusIcon className="w-5 mr-3 [stroke-width:3]" /> New Entry
-            </button>
+            </button>}
             {token && <DeleteItemsButton refreshData={() => {mutate(fetchURL)}} />}
           </div>
           <div className="flex justify-between space-x-2 mt-2">

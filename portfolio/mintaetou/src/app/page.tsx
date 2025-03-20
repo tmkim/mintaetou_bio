@@ -79,8 +79,8 @@ export default function Page() {
                     things I really enjoy. So if you want to learn about things that make me happy,
                     please check out my&nbsp;
                     <a href="/DankBank" className="font-semibold text-blue-500 underline hover:text-blue-700 transition-colors duration-300">
-                    Dank Bank!
-                    </a>
+                    Dank Bank
+                    </a>!
                   </p> 
                   <pre className="text-wrap">
                     Made using Django Rest Framework, Next.js, Tailwind CSS, PostgreSQL, AWS S3
@@ -143,7 +143,7 @@ export default function Page() {
                     TCG Bounty Hunter
                     </a>
                     &nbsp;to help figure out the estimated total cost of any sized set of cards, 
-                    using current market prices found on TCGPlayer
+                    using current market prices found on TCGPlayer!
                   </p> 
                   <pre className="text-wrap">
                     Django Rest Framework, Pandas, Next.js, Tailwind CSS, PostgreSQL, AWS S3<br />
@@ -179,7 +179,7 @@ export default function Page() {
                   Gaming
                 </h1>
                 <p>
-                  Some of my favorite games - WoW, Melee, Animal Crossing, Valorant ...
+                  Some of my favorite games - WoW, Melee, Animal Crossing, Monster Train ...
                 </p>
               </div>
               <div className="p-6 bg-white shadow-md border rounded-lg">
