@@ -110,7 +110,7 @@ const ItemsPage: React.FC = () => {
   // mutate fetchURL in response to changes in searchQuery (debounced), currentPage, and pageLimit
   useEffect(() => {
     mutate(fetchURL)
-    console.log(fetchURL)
+    // console.log(fetchURL)
   }, [debouncedSearchQuery, currentPage, pageLimit, sortOrder]);
 
   const [item, setItemDetail] = useState<Item | null>(null);

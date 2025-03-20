@@ -51,7 +51,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
             try {
               const response = await fetch(apiUrl + 'selectoption/?category=Location');
               const data = await response.json();
-              console.log(data); // Log the data to inspect its structure
+              //console.log(data); // Log the data to inspect its structure
           
               // Check if the results key exists and is an array
               if (Array.isArray(data.results)) {
@@ -68,7 +68,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
             try {
                 const response = await fetch(apiUrl + 'selectoption/?category=Source');
                 const data = await response.json();
-                console.log(data); // Log the data to inspect its structure
+                //console.log(data); // Log the data to inspect its structure
             
                 // Check if the results key exists and is an array
                 if (Array.isArray(data.results)) {
@@ -155,7 +155,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
         // Append the new images to the existing images
         // setSelectedImages((prevFiles) => [...prevFiles, ...newImages]);
         setSelectedImages((prevFiles) => {
-            console.log("Previous files:", prevFiles);
+            //console.log("Previous files:", prevFiles);
             return [...prevFiles, ...newImages];  // Make sure we're appending, not duplicating
           });
       };
@@ -257,7 +257,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
                     imageFormData.append(`description_${index}`, file.description);
                 });
     
-                console.log(imageFormData); 
+                //console.log(imageFormData); 
                 const uploadResponse = await fetch(apiUrl + 'image/', {
                     method: 'POST',
                     body: imageFormData,

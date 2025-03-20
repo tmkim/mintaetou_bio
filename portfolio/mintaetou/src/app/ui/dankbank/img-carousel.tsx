@@ -16,7 +16,7 @@ const ImageCarousel = ({ itemId }: { itemId: number }) => {
         const fetchImages = async () => {
             const response = await fetch(apiUrl + `image/?item=${itemId}`);
             const data = await response.json();
-            console.log(data)
+            //console.log(data)
             setImages(data.results); // Assuming your response contains the image data in "results"
         };
 

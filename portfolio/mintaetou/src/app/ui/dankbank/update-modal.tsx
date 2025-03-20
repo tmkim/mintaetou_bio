@@ -87,7 +87,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
             try {
               const response = await fetch(apiUrl + 'selectoption/?category=Location');
               const data = await response.json();
-              console.log(data); // Log the data to inspect its structure
+              //console.log(data); // Log the data to inspect its structure
           
               // Check if the results key exists and is an array
               if (Array.isArray(data.results)) {
@@ -104,7 +104,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
             try {
                 const response = await fetch(apiUrl + 'selectoption/?category=Source');
                 const data = await response.json();
-                console.log(data); // Log the data to inspect its structure
+                //console.log(data); // Log the data to inspect its structure
             
                 // Check if the results key exists and is an array
                 if (Array.isArray(data.results)) {
@@ -197,7 +197,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
         // Append the new images to the existing images
         // setSelectedImages((prevFiles) => [...prevFiles, ...newImages]);
         setSelectedImages((prevFiles) => {
-            console.log("Previous files:", prevFiles);
+            //console.log("Previous files:", prevFiles);
             return [...prevFiles, ...newImages];  // Make sure we're appending, not duplicating
           });
       };
@@ -229,7 +229,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
     
         // Case 1: If the image is unchanged, skip
         if (originalImage && originalImage.name === newImage.name && originalImage.description === newImage.description) {
-            console.log(`No change detected - ${originalImage.name}:${originalImage.description}`)
+            //console.log(`No change detected - ${originalImage.name}:${originalImage.description}`)
             return; // No change, skip
         }
     
@@ -239,7 +239,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
             formData.append('name', newImage.name);
             formData.append('description', newImage.description);
           // Update the existing image
-          console.log(`Update detected - ${newImage}`)
+          //console.log(`Update detected - ${newImage}`)
           updateRequests.push(
             fetch(apiUrl + `image/${newImage.id}/`, {
               method: 'PATCH',
@@ -258,7 +258,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
     
         if (!newImage) {
           // If the image no longer exists, delete it
-          console.log(`Deletion detected`)
+          //console.log(`Deletion detected`)
           deleteRequests.push(
             fetch(apiUrl + `image/${originalImage.id}/`, {
               method: 'DELETE',
@@ -276,7 +276,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
             imageFormData.append(`description_${index}`, file.description);
         });
 
-        console.log(imageFormData); 
+        //console.log(imageFormData); 
         addRequest.push(fetch(apiUrl + 'image/', {
             method: 'POST',
             body: imageFormData,
@@ -294,7 +294,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
 
     // Update item
     try {
-      console.log(apiUrl + `items/${item.id}/`)
+      //console.log(apiUrl + `items/${item.id}/`)
       const response = await fetch(apiUrl + `items/${item.id}/`, {
         method: 'PUT', // Or 'PATCH' if you're doing partial updates
         headers: {
@@ -368,9 +368,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
         // Handle the responses (successful updates/deletes/adds)
         responses.forEach((response) => {
             if (response.status === 'fulfilled') {
-                if (response.value.ok) {
-                    console.log('Request succeeded:', response.value);
-                } else {
+                if (!response.value.ok) {
                     console.error('Request failed with status:', response.value.status, response.value);
                 }
             } else {
