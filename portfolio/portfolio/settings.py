@@ -53,7 +53,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = ['18.226.169.139']
+ALLOWED_HOSTS = [os.environ['HOST_ALLOWED']]
 
 
 # Application definition
@@ -84,10 +84,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000', 
-    'http://18.226.169.139:8000',  # Add the URL of your frontend here
-]
+CORS_ALLOWED_ORIGINS = [os.environ['CORS_ALLOWED']]
 CORS_ALLOW_METHODS = [
     'GET',
     'POST',

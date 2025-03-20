@@ -11,6 +11,7 @@ import { PlusIcon } from '@heroicons/react/24/outline';
 import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useSWR, { mutate } from "swr";
+import debounce from 'lodash.debounce';
 
 type FilterChecks = {
   Dining: boolean;
@@ -20,7 +21,7 @@ type FilterChecks = {
 }
 
 const fetcher = async (url: string) => {
-  console.log(url)
+  // console.log(url)
   const res = await fetch(url);
   if (!res.ok) {
     throw new Error('Network response was not ok');
@@ -29,10 +30,22 @@ const fetcher = async (url: string) => {
   return r;
 };
 
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => setDebouncedValue(value), delay);
+
+    return () => clearTimeout(handler);
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
 const ItemsPage: React.FC = () => {
   
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  console.log(apiUrl)
+  // console.log(apiUrl)
 
   const [token, setToken] = useState<string | null>(null);
 
@@ -48,6 +61,8 @@ const ItemsPage: React.FC = () => {
   const orderParam = searchParams.get('ordering') || '';
 
   const [searchQuery, setSearchQuery] = useState<string>(queryParam);
+  const debouncedSearchQuery = useDebounce(searchQuery, 200);
+
   const [currentPage, setCurrentPage] = useState<number>(parseInt(pageParam, 10));
   const [pageLimit, setPageLimit] = useState<number>(parseInt(limitParam, 10));
   const [totalItems, setTotalItems] = useState<number>(0);
@@ -76,26 +91,6 @@ const ItemsPage: React.FC = () => {
     setCurrentPage(1); // Optional: reset to first page when limit changes
   };
 
-  const updateQueryParams = (newQuery: string, newPage: number, newLimit: number) => {
-    const uniqueCategories = Array.from(new Set(selectedCategories));
-
-    const newUrl = new URL(window.location.href);
-    newUrl.searchParams.set('query', newQuery);
-    newUrl.searchParams.set('page', newPage.toString());
-    newUrl.searchParams.set('limit', newLimit.toString());
-
-    newUrl.searchParams.delete('category');
-    uniqueCategories.forEach((category) => {
-      newUrl.searchParams.append('category', category);
-    });
-    newUrl.searchParams.delete('ordering');
-    if (sortOrder !== ''){
-      newUrl.searchParams.append('ordering', sortOrder.split('=')[1]);
-    }
-
-    window.history.pushState({}, '', newUrl.toString());
-  };
-
   const selectedCategories = Object.keys(filterCheck).filter((key) => filterCheck[key as keyof FilterChecks]);
   const categoryParams = selectedCategories.length > 0 ? '&category=' + selectedCategories.join('&category=') : '';
 
@@ -112,16 +107,15 @@ const ItemsPage: React.FC = () => {
     }
   }, [data]);
 
-  // Call the updateQueryParams in response to changes in searchQuery, currentPage, and pageLimit
+  // mutate fetchURL in response to changes in searchQuery (debounced), currentPage, and pageLimit
   useEffect(() => {
     mutate(fetchURL)
-    // updateQueryParams(searchQuery, currentPage, pageLimit);
-  }, [searchQuery, currentPage, pageLimit, sortOrder]);
+    console.log(fetchURL)
+  }, [debouncedSearchQuery, currentPage, pageLimit, sortOrder]);
 
   const [item, setItemDetail] = useState<Item | null>(null);
   const handleRowClick = (rowData: Item) => {
     setItemDetail(rowData);
-    // console.log(rowData);
   };
 
   if (error) {

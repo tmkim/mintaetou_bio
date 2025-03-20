@@ -85,3 +85,7 @@ Ported over my backend and frontend from my DankBank project
     --- media genre still saying "Other:"
     --- need to implement debouncing for search 
     --- having trouble uploading images to AWS 
+
+3/20
+    -- fixed media genre 
+    
