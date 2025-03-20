@@ -199,7 +199,7 @@ const ItemDetails: React.FC<ItemDetailsProps> = ({ item }) => {
 
 
     return (
-        <div className="flow-root bg-white">
+        <div className="flow-root bg-white rounded-xl">
             <div className="inline-block min-w-full align-middle">
                 <div className="border-separate overflow-y-auto rounded-xl border-2 border-gray-400 border-4 border-solid flex flex-col text-xl"
                      style={{height: 'calc(102px + 70vh)'}}>

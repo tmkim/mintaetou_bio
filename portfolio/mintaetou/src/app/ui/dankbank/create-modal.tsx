@@ -409,7 +409,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
                                 name="location"
                                 value={selectedLocation}
                                 onChange={handleLocationChange}
-                                className="block w-full px-4 py-2 rounded-md border border-gray-400 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="block w-full px-4 py-2 rounded-md bg-white border border-gray-400 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                             >
                                 <option value="">Select a location</option>
                                 {locations.map((location, index) => (
@@ -499,7 +499,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
                                 name="source"
                                 value={selectedSource}
                                 onChange={handleSourceChange}
-                                className="block w-full px-4 py-2 rounded-md border border-gray-400 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="block w-full px-4 py-2 rounded-md bg-white border border-gray-400 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                             >
                                 <option value="">Select a location</option>
                                 {sources.map((source, index) => (
@@ -607,7 +607,7 @@ const CreateModal: React.FC<CreateProps> = ({ onClose, data, refreshData }) => {
                                 Category:
                             </label>
                             <select
-                                className="block w-full rounded-md border border-gray-400 px-4 py-2 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="block w-full rounded-md bg-white border border-gray-400 px-4 py-2 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                                 id="category"
                                 name="category"
                                 value={selectedCategory}

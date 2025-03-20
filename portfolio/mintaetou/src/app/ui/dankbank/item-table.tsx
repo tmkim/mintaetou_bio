@@ -140,7 +140,7 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, so
 
   return (
     <>
-      <div className="mt-2 flow-root bg-white">
+      <div className="mt-2 flow-root bg-white rounded-xl">
         <div className="inline-block min-w-full align-middle">
           <div className="h-[70vh] border-2 border-gray-400 border-solid rounded-xl flex flex-col overflow-hidden">
             <table className="min-w-full table-fixed border-collapse text-gray-900">

@@ -524,7 +524,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
                             name="location"
                             value={selectedLocation}
                             onChange={handleLocationChange}
-                            className="block w-full px-4 py-2 rounded-md border border-gray-300 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                            className="block w-full px-4 py-2 rounded-md bg-white border border-gray-300 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                         >
                             <option value="">Select a location</option>
                             {locations.map((location, index) => (
@@ -622,7 +622,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
                             name="source"
                             value={selectedSource}
                             onChange={handleSourceChange}
-                            className="block w-full px-4 py-2 rounded-md border border-gray-300 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                            className="block w-full px-4 py-2 rounded-md bg-white border border-gray-300 text-base text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
                         >
                             <option value="">Select a source</option>
                             {sources.map((source, index) => (
@@ -738,7 +738,7 @@ const UpdateModal: React.FC<UpdateProps> = ({ item, onClose, onUpdate }) => {
                             Category:
                         </label>
                         <select
-                          className={`block w-full rounded-md border border-gray-300 px-4 py-2 text-base text-gray-500 bg-gray-100 focus:outline-none`}
+                          className={`block w-full rounded-md bg-white border border-gray-300 px-4 py-2 text-base text-gray-500 bg-gray-100 focus:outline-none`}
                           id="category"
                           name="category"
                           value={selectedCategory}
