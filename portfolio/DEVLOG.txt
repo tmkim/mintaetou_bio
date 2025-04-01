@@ -93,3 +93,32 @@ Ported over my backend and frontend from my DankBank project
     ++ clean up ui backgrounds 
     -- fix login/logout button 
     ++ fix MORE dropdown background 
+
+3/31
+    Today we're working on reworking authentication
+    Key components..
+        - Layout?
+        - AuthContext (AuthProvider)
+        - Login Page 
+        - Navbar (power button)
+        - DankBank (multi-delete)
+            - item table (edit buttons)
+
+    So currently I'm using localStorage to keep track of authentication but I want to move to a more secure method.
+    Based on some research I want to reconfigure my Django to:
+        > Use HTTP-only, Secure, SameSite cookies for storing tokens 
+        > Handle login/logout properly via API (kinda doing that already)
+        > Issue both an access token (short lived) and a refresh token 
+    Then I can update my frontend to:
+        > use fetch with [credentials:include] to send cookies 
+        > store authentication state in react context 
+        > implement silent token refresh 
+
+    So we made some updates to how authentication is handled.
+        * update backend to include views for login, logout, checkauth
+        * update backend settings to include additional simplejwt settings
+        * add frontend route /api/auth-context/route.ts for client-side authentication status checks
+        * update frontend AuthContext to use new backend and frontend routes
+
+4/1
+    Alright I think we're overcomplicating things here so I'm going to revert and try authentication fresh.
