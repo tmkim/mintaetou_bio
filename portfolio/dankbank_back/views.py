@@ -1,4 +1,5 @@
 from django.core.files.base import ContentFile
+from django.http import JsonResponse
 from rest_framework import viewsets
 from rest_framework.decorators import action, api_view
 from rest_framework.reverse import reverse
@@ -21,6 +22,12 @@ from django.core.files.base import ContentFile
 s3 = boto3.client('s3', aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
                 aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
                 region_name=settings.AWS_REGION)
+
+from django.views.decorators.csrf import ensure_csrf_cookie
+
+@ensure_csrf_cookie
+def get_csrf_token(request):
+    return JsonResponse({"detail": "CSRF cookie set"})
 
 class ImageViewSet(viewsets.ModelViewSet):
     queryset = Image.objects.all()  # Define your queryset (all images)

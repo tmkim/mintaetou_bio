@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { GlobeAltIcon, PowerIcon } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/dankbank/fonts';
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 interface NavLink {
     name: string;
@@ -30,24 +31,19 @@ const Navbar = () => {
   const [visibleLinks, setVisibleLinks] = useState(links);
   const [hiddenLinks, setHiddenLinks] = useState<NavLink[]>([]);
   const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { user, logout } = useAuth();
+  
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(() => {
       updateLinks();
     });
-    const updateAuthState = () => {
-      setIsLoggedIn(!!localStorage.getItem("token"));
-    };
-  
-    window.addEventListener("storage", updateAuthState);
     
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current);
     }
 
     return () => {
-      window.removeEventListener("storage", updateAuthState);
       if (containerRef.current) {
         resizeObserver.unobserve(containerRef.current);
       }
@@ -55,12 +51,9 @@ const Navbar = () => {
   }, []);
 
   const handleLogInOut = () => {
-    if (isLoggedIn){
-      localStorage.removeItem("token"); // Remove token
-      setIsLoggedIn(false); // Update state
-      router.push("/redirect");
+    if (user){
+      logout()
     } else{
-      setIsLoggedIn(true)
       router.push("/login"); // Redirect to login
     }
 
@@ -108,9 +101,15 @@ const Navbar = () => {
           <div className="hidden md:flex items-center text-white text-2xl w-full" ref={containerRef}>
           {visibleLinks.map((link, index) => 
               link.name === 'Login' ? (
-                <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 hover:cursor-pointer min-w-[50px] mr-20 text-center">
-                  <PowerIcon/>
+                user ? (
+                  <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 hover:cursor-pointer min-w-[50px] mr-20 text-center">
+                  Log Out
                 </button>
+                ) : (
+                  <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 hover:cursor-pointer min-w-[50px] mr-20 text-center">
+                  Log In
+                </button>
+                )
               ) : (
                 <a key={index} href={link.href} className="hover:underline hover:text-blue-300 mr-20 text-left">
                   {link.name}

@@ -20,4 +20,6 @@ from django.urls import include, path
 urlpatterns = [
     path('dankbank_back/', include('dankbank_back.urls')),
     path('api-auth/', include('rest_framework.urls')),
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls'))
 ]

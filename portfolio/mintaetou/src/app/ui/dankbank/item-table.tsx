@@ -7,6 +7,7 @@ import { PencilIcon } from '@heroicons/react/20/solid';
 import UpdateModal from '@/app/ui/dankbank/update-modal';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import ConfirmDeleteModal from '@/app/ui/dankbank/delete-modal';
+import { useAuth } from '@/context/AuthContext';
 
 type ItemTableProps = {
   onRowClick: (item: Item) => void;
@@ -19,14 +20,7 @@ type ItemTableProps = {
 const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, sortOrder, setData }) => {
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  // const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
-  const [token, setToken] = useState<string | null>(null);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setToken(localStorage.getItem("token"));
-    }
-  }, []);
+  const { user } = useAuth();
   
   useEffect(() => {
     setData(data)
@@ -153,7 +147,7 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, so
                   <span className="hover:bg-green-500 cursor-pointer px-2 py-2 rounded-xl" onClick={() => handleSort("rating")}>Rating {getSortArrow("rating")}</span>
                   </th>
                   <th className="px-4 py-2 text-right pr-7 w-1/8"
-                   style={{ visibility: token ? 'visible' : 'hidden' }}>
+                   style={{ visibility: user?.username === "danktmk" ? 'visible' : 'hidden' }}>
                     Actions
                   </th>
                 </tr>
@@ -177,7 +171,7 @@ const ItemTable: React.FC<ItemTableProps> = ({ onRowClick, data, refreshData, so
                         {item.rating} / 100
                       </p>
                     </td>
-                    <td className="min-w-1/8 text-right" style={{ visibility: token ? 'visible' : 'hidden' }}>
+                    <td className="min-w-1/8 text-right" style={{ visibility: user?.username === "danktmk" ? 'visible' : 'hidden' }}>
                       <button
                         onClick={() => setSelectedItem(item)}
                         className="border border-gray-300 p-1 mr-1 rounded-md hover:border-gray-500 focus:outline focus:outline-3 focus:outline-blue-500"

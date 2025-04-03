@@ -122,3 +122,32 @@ Ported over my backend and frontend from my DankBank project
 
 4/1
     Alright I think we're overcomplicating things here so I'm going to revert and try authentication fresh.
+    I looked into what other people are doing for the Nextjs + DRF authentication and found this plan:
+        NextAuth + Credentials Provider
+            > Django holds user database, usernames and passwords etc 
+            > Third party providers also go through Django to create user
+            > Use NextAuth to manage front-end 
+        Stack in summary:
+            > NextJS + NextAuth frontend 
+                -- use JWT and Credentials provider 
+            > Django backend with User model 
+            > dj-rest-auth provides auth endpoints (login, registration, validate token, reset password, validate email)
+            > django-allauth handle email login, social login 
+            > simplejwt for JWT handling 
+            
+            -- API calls that require user session pass JWT in header from frontend so DRF has context of who the user is 
+            -- NextAuth holds session of user (name, username, email, token, etc)
+
+    So first - let's set up our backend properly.
+        > We can use the default Django user model (https://docs.djangoproject.com/en/5.1/ref/contrib/auth/)
+            - username, first_name, last_name, email, password, groups, user_permissions, is_staff, is_active, is_superuser, last_login, date_joined
+        > Let's install dj-rest-auth
+            + pip install dj-rest-auth 
+            + update settings.py 
+            + update portfolio/urls.py 
+            + migrate database
+            ---
+            Registration (optional)
+            + pip install 'dj-rest-auth[with_social]' (seems to already have been handled by above)
+            + update settings.py 
+            + update portfolio/urls.py

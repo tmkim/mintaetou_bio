@@ -2,16 +2,17 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LoginPage() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  // const authUrl = process.env.NEXT_PUBLIC_AUTH_URL;
+  const { user, login } = useAuth();
 
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
   const [error, setError] = useState("");
-  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,28 +20,8 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError("");
 
-    try {
-      const response = await fetch(apiUrl + "login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        setError("Invalid username or password");
-        return;
-      }
-
-      const data = await response.json();
-      localStorage.setItem("token", data.access);
-      router.push("/redirect");
-    } catch (err) {
-      setError("Something went wrong. Please try again.");
-    }
+    login(formData.username, formData.password)
   };
 
   return (

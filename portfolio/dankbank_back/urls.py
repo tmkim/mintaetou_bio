@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
-from .views import CustomTokenObtainPairView, ItemViewSet, ImageViewSet, SelectOptionViewSet
+from .views import CustomTokenObtainPairView, ItemViewSet, ImageViewSet, SelectOptionViewSet, get_csrf_token
 
 # Create a router and register our ViewSets with it.
 router = DefaultRouter()
@@ -11,7 +11,8 @@ router.register(r'selectoption', SelectOptionViewSet, basename='selectoption')
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
-    path('login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # path('login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path("csrf/", get_csrf_token),  
     path('', include(router.urls)),
 ]

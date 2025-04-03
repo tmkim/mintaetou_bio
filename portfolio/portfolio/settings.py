@@ -67,11 +67,34 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework.authtoken',
     'dankbank_back',
     'corsheaders',
     'storages',
-    'django_extensions'
+    'django_extensions',
+    'dj_rest_auth',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
 ]
+
+SITE_ID = 1
+
+REST_USE_JWT = False  # Use JWT if you prefer, but we’re using session cookies
+ACCOUNT_LOGIN_METHODS = ['username']  # "username","email" if both
+ACCOUNT_SIGNUP_FIELDS = ['email', 'username*', 'password1']
+
+# Cookie-based authentication settings
+CORS_ALLOW_CREDENTIALS = True
+
+SESSION_COOKIE_SECURE = True  # Ensure HTTPS is used
+SESSION_COOKIE_HTTPONLY = False
+
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_NAME = "csrftoken"
+CSRF_TRUSTED_ORIGINS = [os.environ['CORS_ALLOWED']]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,6 +105,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 CORS_ALLOWED_ORIGINS = [os.environ['CORS_ALLOWED']]
@@ -100,9 +124,13 @@ CORS_ALLOW_HEADERS = [
     'X-CSRFToken',
 ]
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework_simplejwt.authentication.JWTAuthentication',
+    # ),
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        # "rest_framework.authentication.TokenAuthentication",  # If using token-based auth
+    ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }

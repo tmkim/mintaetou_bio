@@ -12,6 +12,7 @@ import React, { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useSWR, { mutate } from "swr";
 import debounce from 'lodash.debounce';
+import { useAuth } from '@/context/AuthContext';
 
 type FilterChecks = {
   Dining: boolean;
@@ -43,15 +44,8 @@ function useDebounce<T>(value: T, delay: number): T {
 }
 
 const ItemsPage: React.FC = () => {
-  
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-  // console.log(apiUrl)
-
-  const [token, setToken] = useState<string | null>(null);
-
-  useEffect(() => {
-    setToken(localStorage.getItem("token")); // Read token only on client
-  }, []);
+  const { user } = useAuth();
 
   const searchParams = useSearchParams();
   
@@ -136,13 +130,13 @@ const ItemsPage: React.FC = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 // onBlur={() => updateQueryParams(searchQuery, 1, pageLimit)}
               />
-            {token && <button
+            {user?.username === "danktmk" && <button
               className="flex items-center justify-center min-w-[160px] p-2 text-lg font-semibold bg-green-500 text-white rounded-md hover:bg-green-600"
               onClick={() => setCreateModal(true)}
             >
               <PlusIcon className="w-5 mr-3 [stroke-width:3]" /> New Entry
             </button>}
-            {token && <DeleteItemsButton refreshData={() => {mutate(fetchURL)}} />}
+            {user?.username === "danktmk" && <DeleteItemsButton refreshData={() => {mutate(fetchURL)}} />}
           </div>
           <div className="flex justify-between space-x-2 mt-2">
             <div className="flex gap-2">
