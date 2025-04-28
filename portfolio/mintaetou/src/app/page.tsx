@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import ContactModal from './ui/contact-modal';
+import ImageCarousel from './ui/home/image-carousel';
 export default function Page() {
 
   const [contactModal, setContactModal] = useState<boolean>(false);
@@ -165,6 +166,8 @@ export default function Page() {
                 <p>
                   Disc Golf, Skiing, Swimming, Kendama...
                 </p>
+                <ImageCarousel folder="hobbies" imageNames={['game1.png', 'game2.png', 'game3.png', 'game4.png', 'game5.png']} />
+
               </div>
               <div className="p-6 bg-white shadow-md border rounded-lg">
                 <h1 className="text-2xl font-semibold">

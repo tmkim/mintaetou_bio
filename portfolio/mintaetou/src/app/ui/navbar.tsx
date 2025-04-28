@@ -102,11 +102,11 @@ const Navbar = () => {
           {visibleLinks.map((link, index) => 
               link.name === 'Login' ? (
                 user ? (
-                  <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 hover:cursor-pointer min-w-[50px] mr-20 text-center">
+                  <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 hover:cursor-pointer min-w-[100px] mr-20 text-center">
                   Log Out
                 </button>
                 ) : (
-                  <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 hover:cursor-pointer min-w-[50px] mr-20 text-center">
+                  <button key={index} onClick={handleLogInOut} className="hover:underline hover:text-blue-300 hover:cursor-pointer min-w-[100px] mr-20 text-center">
                   Log In
                 </button>
                 )
