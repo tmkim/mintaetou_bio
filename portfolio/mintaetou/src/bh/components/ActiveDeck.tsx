@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import { useAuth } from "@/context/AuthContext";
-import { OnePieceCard, OnePieceDeck } from "@/bh_lib/types";
+import { OnePieceCard, OnePieceDeck } from "@/bh/bh_lib/types";
 
 type Props = {
   deck: OnePieceDeck;

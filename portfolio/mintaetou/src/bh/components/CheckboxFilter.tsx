@@ -1,5 +1,5 @@
 "use client";
-import { FilterValue } from "@/bh_lib/types";
+import { FilterValue } from "@/bh/bh_lib/types";
 import React from "react";
 
 type CheckboxFilterProps = {

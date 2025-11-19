@@ -1,17 +1,17 @@
 "use client"
-import ActiveDeck from "@/components/ActiveDeck";
-import CardList from "@/components/CardList";
-import DetailsPanel from "@/components/DetailsPanel";
+import ActiveDeck from "@/bh/components/ActiveDeck";
+import CardList from "@/bh/components/CardList";
+import DetailsPanel from "@/bh/components/DetailsPanel";
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { useCards } from "@/hooks/useCards";
-import { OnePieceCard, OnePieceCardHistory, FilterValue, Filters } from "@/bh_lib/types";
-import { OnePieceDeck } from "@/bh_lib/types";
-import { BASE_COST_MAP, BASE_RARITY_MAP, BASE_COUNTER_MAP } from "@/bh_lib/constants";
+import { useCards } from "@/bh/hooks/useCards";
+import { OnePieceCard, OnePieceCardHistory, FilterValue, Filters } from "@/bh/bh_lib/types";
+import { OnePieceDeck } from "@/bh/bh_lib/types";
+import { BASE_COST_MAP, BASE_RARITY_MAP, BASE_COUNTER_MAP } from "@/bh/bh_lib/constants";
 import { serialize } from "v8";
 import { useAuth } from "@/context/AuthContext";
 import toast from "react-hot-toast";
-import { restoreDeck } from "@/hooks/restoreDeck";
-import { useDeck } from "@/hooks/useDeck";
+import { restoreDeck } from "@/bh/hooks/restoreDeck";
+import { useDeck } from "@/bh/hooks/useDeck";
 
 function serializeFilters(filters: Filters): Record<string, any>{
   const obj: Record<string, any> = {};

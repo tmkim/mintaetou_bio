@@ -1,8 +1,8 @@
 import React from 'react';
-import { HistoryData, OnePieceCard } from '@/bh_lib/types';
+import { HistoryData, OnePieceCard } from '@/bh/bh_lib/types';
 import Image from "next/image";
 import { XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, LineChart, Line } from "recharts";
-import { useCardHistory } from "@/hooks/useCardHistory";
+import { useCardHistory } from "@/bh/hooks/useCardHistory";
 import DOMPurify from "dompurify";
 import Link from 'next/link';
 

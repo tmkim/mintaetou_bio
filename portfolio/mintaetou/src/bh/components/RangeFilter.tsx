@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Slider } from "@/components/ui/slider";
-import { Label } from "@/components/ui/label";
-import { FilterValue } from "@/bh_lib/types";
+import { Slider } from "@/bh/components/ui/slider";
+import { Label } from "@/bh/components/ui/label";
+import { FilterValue } from "@/bh/bh_lib/types";
 
 interface RangeFilterProps {
   label: string;

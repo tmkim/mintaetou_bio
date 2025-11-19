@@ -17,6 +17,7 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dompurify": "^3.3.0",
     "framer-motion": "^12.5.0",
     "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
@@ -24,8 +25,12 @@
     "lucide-react": "^0.474.0",
     "next": "latest",
     "next-auth": "^5.0.0-beta.25",
+    "radix-ui": "^1.4.3",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-hook-form": "^7.66.1",
+    "react-hot-toast": "^2.6.0",
+    "recharts": "^3.4.1",
     "swr": "^2.3.2",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
@@ -34,6 +39,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@types/bcrypt": "^5.0.2",
     "@types/lodash.debounce": "^4.0.9",
     "@types/node": "22.10.1",

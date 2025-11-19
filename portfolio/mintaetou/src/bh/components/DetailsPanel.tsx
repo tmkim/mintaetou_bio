@@ -1,9 +1,9 @@
 "use client";
-import { OnePieceCard, HistoryData, OnePieceDeck } from "@/bh_lib/types";
+import { OnePieceCard, HistoryData, OnePieceDeck } from "@/bh/bh_lib/types";
 import Image from "next/image";
 import { useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, TooltipProps } from "recharts";
-import PreviewCardModal from "@/components/PreviewCardModal";
+import PreviewCardModal from "@/bh/components/PreviewCardModal";
 
 type Props = {
   card: OnePieceCard | null;

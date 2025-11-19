@@ -1,10 +1,10 @@
 "use client";
-import { OnePieceCard, FilterValue, OnePieceDeck } from "@/bh_lib/types";
+import { OnePieceCard, FilterValue, OnePieceDeck } from "@/bh/bh_lib/types";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import CheckboxFilter from "./CheckboxFilter";
 import RangeFilter from "./RangeFilter";
-import { usePreparedCards } from "@/hooks/usePreparedCards";
+import { usePreparedCards } from "@/bh/hooks/usePreparedCards";
 
 type Props = {
   allCards: OnePieceCard[];
