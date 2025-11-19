@@ -151,9 +151,3 @@ Ported over my backend and frontend from my DankBank project
             + pip install 'dj-rest-auth[with_social]' (seems to already have been handled by above)
             + update settings.py 
             + update portfolio/urls.py
-
-4/28
-    Been a while but i'm back
-    - updated navbar formatting 
-    - added new image carousel to home page 
-        ** need to gather more pictures to include 
