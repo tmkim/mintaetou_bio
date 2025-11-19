@@ -1,6 +1,6 @@
 // frontend/lib/indexedDB.ts
 import { openDB } from "idb";
-import { OnePieceCard } from "@/bh_lib/types";
+import { OnePieceCard } from "@/bh/bh_lib/types";
 
 const DB_NAME = "cardDB";
 const STORE_NAME = "cards";

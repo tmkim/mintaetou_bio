@@ -1,6 +1,6 @@
 // restoreDeck.ts or above your component
-import { BASE_COST_MAP, BASE_RARITY_MAP, BASE_COUNTER_MAP } from "@/bh_lib/constants";
-import { OnePieceDeck } from "@/bh_lib/types";
+import { BASE_COST_MAP, BASE_RARITY_MAP, BASE_COUNTER_MAP } from "@/bh/bh_lib/constants";
+import { OnePieceDeck } from "@/bh/bh_lib/types";
 
 export async function restoreDeck(): Promise<OnePieceDeck | null> {
   const saved = localStorage.getItem("activeDeck");

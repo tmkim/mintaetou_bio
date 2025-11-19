@@ -1,6 +1,6 @@
 import useSWR from "swr";
-import { fetcher } from "@/bh_lib/fetcher";
-import { HistoryData } from "@/bh_lib/types";
+import { fetcher } from "@/bh/bh_lib/fetcher";
+import { HistoryData } from "@/bh/bh_lib/types";
 
 interface RawHistory{
     id: number;

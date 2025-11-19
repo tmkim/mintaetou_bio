@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { OnePieceCard } from "@/bh_lib/types";
-import { getAllCards, saveCards } from "@/bh_lib/indexedDB";
+import { OnePieceCard } from "@/bh/bh_lib/types";
+import { getAllCards, saveCards } from "@/bh/bh_lib/indexedDB";
 
 const ONE_DAY = 24 * 60 * 60 * 1000;
 

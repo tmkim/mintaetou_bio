@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { OnePieceCard } from "@/bh_lib/types";
+import { OnePieceCard } from "@/bh/bh_lib/types";
 
 function getFilenameFromUrl(url: string): string {
   try {

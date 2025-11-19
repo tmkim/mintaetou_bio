@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { OnePieceCard, OnePieceDeck } from "@/bh_lib/types"; // adjust import paths
+import { OnePieceCard, OnePieceDeck } from "@/bh/bh_lib/types"; // adjust import paths
 import {
   BASE_COST_MAP,
   BASE_RARITY_MAP,
   BASE_COUNTER_MAP,
   EMPTY_DECK,
-} from "@/bh_lib/constants";
+} from "@/bh/bh_lib/constants";
 import toast from "react-hot-toast";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
